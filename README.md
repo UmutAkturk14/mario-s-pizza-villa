@@ -10,11 +10,13 @@ This Rails boilerplate provides a solid foundation for building online applicati
 
 - **Front-end Styling**: Tailwind CSS is set up as the default styling framework to create modern and responsive user interfaces.
 
+- **jQuery**: jQuery is included to simplify front-end interactions and enhance user experience.
+
 - **Database**: PostgreSQL is used as the default database, but you can easily switch to another database of your choice.
 
 - **Rails 7**: This boilerplate is built on Rails 7, harnessing the latest features and improvements.
 
-- **Ready to go Set up**: With simple, minimalistic sign in / sign up pages and a navbar with some generic buttons and a working dropdown, you don't need to lose time to create a working place in the front-end side. You can start working as soon as you clone this repo and worry about the front-end design later.
+- **Ready to go Set up**: With simple, minimalistic sign-in / sign-up pages and a navbar with some generic buttons and a working dropdown, you don't need to lose time creating a working place on the front-end side. You can start working as soon as you clone this repo and worry about the front-end design later.
 
 ## Getting Started
 
