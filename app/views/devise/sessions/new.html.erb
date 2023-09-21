@@ -19,7 +19,7 @@
               </div>
 
               <div class="mt-8">
-                <%= simple_form_for(resource, as: resource_name, url: new_user_session_path(resource_name)) do |f| %>
+                <%= simple_form_for(resource, as: resource_name, url: new_user_session_path) do |f| %>
                   <div>
                     <%= f.input :email,
                                 required: false,
@@ -41,8 +41,8 @@
                               wrapper_html: { class: "mb-2 block w-full" },
                               input_html: { class: "mr-2 rounded" },
                               as: :boolean,
-                              boolean_style: :inline,
-                              label: false %>
+                              boolean_style: :inline, label_html: { class: "text-white text-sm" },
+                              wrapper_html: { class: "flex justify-start items-center" } %>
 
                   <div class="form-actions mt-6 w-full flex justify-center">
                     <%= f.button :submit, "Sign in", class: "w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-blue-500 rounded-md hover:bg-blue-400 focus:outline-none focus:bg-blue-400 focus:ring focus:ring-blue-300 focus:ring-opacity-50" %>
