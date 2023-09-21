@@ -42,6 +42,6 @@ dev
 ## Usage
 - Customize the application by adding your own controllers, models, and views.
 
-- Update the RestaurantPolicy class and views to define and enforce authorization rules as needed for your application.
+- Update the policies to define and enforce authorization rules as needed for your application.
 
 - Extend the application's functionality according to your project requirements.
