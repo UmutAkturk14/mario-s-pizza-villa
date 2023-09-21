@@ -24,8 +24,8 @@ Follow these steps to get started with this boilerplate:
 
 1. Clone the repository to your local machine:
 ```bash
-gh repo clone UmutAkturk14/rails-template-pundit-tailwind <your-project-name>
-cd <your-project-name>
+gh repo clone UmutAkturk14/rails-template-pundit-tailwind project-name
+cd project-name
 ```
 2. Install the required gems: 
 ```bash
