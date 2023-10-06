@@ -1,4 +1,26 @@
-<div>
-  <h1 class="font-bold text-4xl">Pages#home</h1>
-  <p>Find me in app/views/pages/home.html.erb</p>
+<% content_for :title, "Home" %>
+
+<main class="flex-grow page-content">
+  <div class="relative m-auto">
+    <img src="https://images.unsplash.com/photo-1584859977999-531c305575b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="" class="w-full h-[75vh] object-cover my-8">
+    <div class="text-white absolute p-2 top-0 h-full w-full flex flex-col justify-center">
+      <p class="text-6xl text-center font-bold drop-shadow-3xl font-heading shadow-rose-900">Mario's Pizza Villa</p>
+      <p class="text-3xl text-center mt-6 drop-shadow-3xl italic font-heading shadow-rose-900">Crafting magic</p>
+    </div>
+  </div>
+
+  <div class="flex flex-col justify-center items-center m-auto mb-20 text-white">
+    <p class="lg:text-3xl font-bold font-heading">Slice, Sip, Smile: Your Pizza Haven🍕</p>
+
+    <p class="font-bold mt-8">Uptown</p>
+    <p class="text-gray-300">101 Pine Road</p>
+    <p class="text-gray-300 mt-3">Monday–Thursday: 7am–2pm</p>
+    <p class="text-gray-300">Friday–Sunday: 7am–4pm</p>
+
+    <p class="font-bold mt-8">Downtown</p>
+    <p class="text-gray-300">456 Elm Avenue</p>
+    <p class="text-gray-300 mt-3">Monday–Thursday: 7am–2pm</p>
+    <p class="text-gray-300">Friday–Sunday: 7am–4pm</p>
 </div>
+
+</main>

@@ -10,7 +10,23 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+        sans: ['Lora', ...defaultTheme.fontFamily.sans],
+        "heading": ['Croissant One', "cursive"],
+      },
+
+      dropShadow: {
+        "3xl": "0 35px 35px rgba(0, 0, 0, 0.5)"
+      },
+
+      animation: {
+        "fade-in": "fadeInAnimation 1s ease-in-out forwards",
+      },
+
+      keyframes: {
+        fadeInAnimation: {
+          "0%": { opacity: 0 },
+          "100%": { opacity: 1 },
+        },
       },
     },
   },
