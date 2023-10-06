@@ -1,0 +1,49 @@
+<% content_for :title, "Contact" %>
+
+<main class="flex-grow page-content">
+  <!-- Contact Form Section -->
+  <section class="container mx-auto grid lg:grid-cols-2">
+    <div class="flex flex-col text-center lg:text-start m-auto p-6 mb-20 w-full h-full">
+      <p class="text-4xl font-bold font-heading">Jazzed Sips</p>
+
+      <p class="font-bold mt-8">Uptown</p>
+        <p class="text-gray-500">101 Pine Road</p>
+        <p class="text-gray-500 mt-3">Monday–Thursday: 7am–2pm</p>
+        <p class="text-gray-500">Friday–Sunday: 7am–4pm</p>
+
+      <p class="font-bold mt-8">Downtown</p>
+        <p class="text-gray-500">456 Elm Avenue</p>
+        <p class="text-gray-500 mt-3">Monday–Thursday: 7am–2pm</p>
+        <p class="text-gray-500">Friday–Sunday: 7am–4pm</p>
+    </div>
+    <div class="bg-amber-50  rounded-lg p-6">
+      <h1 class="text-3xl font-semibold mb-4 font-heading">Contact Us</h1>
+
+
+      <%# Add route if needed. %>
+      <form action="#" method="POST" class="space-y-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+          <div>
+              <label for="name" class="block text-gray-600">Name</label>
+              <input type="text" id="name" name="name" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-amber-500" required>
+          </div>
+
+          <div>
+              <label for="email" class="block text-gray-600">Email</label>
+              <input type="email" id="email" name="email" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-amber-500" required>
+          </div>
+        </div>
+
+        <div>
+          <label for="message" class="block text-gray-600">Message</label>
+          <textarea id="message" name="message" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-amber-500" rows="6" required></textarea>
+        </div>
+
+        <div>
+            <button type="submit" class="bg-amber-500 text-white py-2 px-6 rounded hover:bg-amber-600 transition duration-300">Submit</button>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>

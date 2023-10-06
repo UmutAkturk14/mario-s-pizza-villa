@@ -1,0 +1,73 @@
+<% content_for :title, "Services" %>
+
+<main class="page-content gap-6 mt-2 w-full lg:w-1/3 mx-auto ">
+  <p class="font-bold text-4xl mt-4 font-heading text-center underline underline-offset-4">Our services</p>
+  <section class="flex-grow gap-4 w-full text-justify col-span-1 p-4 justify-center">
+    <% services = [
+      {
+        title: "Artisan Coffee Selection",
+        content: "Jazzed Sips offers a curated selection of artisanal coffee beans from around the world, ensuring coffee enthusiasts can savor the finest brews.",
+        image: "https://images.unsplash.com/photo-1655475782112-a6302e5b415f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+        alt: "Coffee beans"
+      },
+      {
+        title: "Specialty Drinks",
+        content: "In addition to classic coffee offerings, the shop provides a menu of specialty coffee drinks such as cappuccinos, lattes, and macchiatos, each crafted with care and creativity.",
+        image: "https://images.unsplash.com/photo-1634863617638-49edc8a6294a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1904&q=80",
+        alt: "Specialty drinks"
+      },
+      {
+        title: "Live Jazz Performances",
+        content: "Jazzed Sips hosts live jazz performances once a week, creating a unique and vibrant atmosphere where patrons can enjoy music with their coffee.",
+        image: "https://images.unsplash.com/photo-1577369256636-2c077eec9abc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2090&q=80",
+        alt: "Live jazz"
+      },
+      {
+        title: "Book Nook",
+        content: "The coffee shop has a cozy 'Book Nook' where customers can browse and borrow books, fostering a sense of community and intellectual engagement.",
+        image: "https://images.unsplash.com/photo-1533327325824-76bc4e62d560?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80",
+        alt: "Book nook"
+      },
+      {
+        title: "Homemade Cookies",
+        content: "Complementing the coffee, Jazzed Sips bakes fresh, homemade cookies daily, offering a delightful treat to pair with your favorite brew.",
+        image: "https://images.unsplash.com/photo-1618828599549-688da17cf56c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+        alt: "Homemade cookie"
+      },
+      {
+        title: "Outdoor Seating",
+        content: "For those who prefer to enjoy their coffee in the open air, the shop provides outdoor seating, allowing customers to soak in the atmosphere of the neighborhood.",
+        image: "https://images.unsplash.com/photo-1571515476930-f59475a66a58?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80",
+        alt: "Outdoor seating"
+      },
+      {
+        title: "Free Wi-Fi",
+        content: "Jazzed Sips offers free Wi-Fi, making it an ideal spot for remote work, studying, or catching up on emails while sipping on coffee.",
+        image: "https://images.unsplash.com/photo-1600238454024-bc8c1e49caba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2065&q=80",
+        alt: "Free Wi-Fi"
+      },
+      {
+        title: "Private Events",
+        content: "The coffee shop is available for private events and gatherings, including book club meetings, small parties, and workshops.",
+        image: "https://images.unsplash.com/photo-1527529482837-4698179dc6ce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+        alt: "Private events"
+      },
+      {
+        title: "Catering Services",
+        content: "Jazzed Sips provides catering services for local events and meetings, delivering quality coffee and pastries to your location.",
+        image: "https://images.unsplash.com/photo-1662982692022-d52aa6c10c5d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
+        alt: "Croissants"
+      },
+      {
+        title: "Jazz Merchandise",
+        content: "For jazz enthusiasts, the shop offers a selection of jazz-themed merchandise, including T-shirts, mugs, and vinyl records.",
+        image: "https://images.unsplash.com/photo-1549477606-43a329b26066?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+        alt: "Vinyl"
+      }
+    ] %>
+
+    <% services.each do |service| %>
+      <%= render_service(service) %>
+    <% end %>
+  </section>
+</main>

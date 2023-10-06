@@ -1,0 +1,50 @@
+<% content_for :title, "About Us" %>
+
+<main class="page-content grid lg:grid-cols-2 gap-6 mt-2 lg:mx-20">
+  <section class="flex-grow gap-4 w-full text-justify col-span-1 p-4 justify-center">
+    <% about_sections = [
+      {
+        title: "About Jazzed Sips",
+        content: "Welcome to Jazzed Sips, where the enchanting melodies of jazz meet the rich aroma of coffee. Founded in 2014, Jazzed Sips has been a cherished destination for coffee enthusiasts and music lovers alike. We're more than just a coffee shop; we're a haven for those who appreciate the finer things in life."
+      },
+      {
+        title: "Our Unique Blend",
+        content: "At Jazzed Sips, we've carefully crafted an atmosphere that's both soothing and vibrant. The soulful tunes of jazz are a constant presence in our cozy space, creating an ambiance that's perfect for relaxation or catching up with friends. And don't forget to join us every Friday for our live music sessions, where talented artists grace our stage with their performances."
+      },
+      {
+        title: "Meet Our Founder",
+        content: "Behind the scenes, you'll find our passionate owner, Estel. As a jazz enthusiast, coffee connoisseur, and lover of books and cookies, Estel brings a personal touch to every aspect of Jazzed Sips. His dedication to creating a warm and inviting space is reflected in every cup of coffee we serve and every note of music that fills the air."
+      },
+      {
+        title: "A Place of Gathering",
+        content: "Whether you're here to savor a handcrafted espresso, lose yourself in a good book, or simply enjoy the company of friends, Jazzed Sips is a place where people come together. Our baristas are not just experts in brewing coffee; they're also storytellers, ready to share their knowledge and passion with you."
+      },
+      {
+        title: "Visit Us",
+        content: "Jazzed Sips is located at 101 Pine Road and 456 Elm Avenue for now, cozy spots that welcome all who seek the perfect blend of jazz, coffee, and community. Join us in celebrating life's simple pleasures and the joy of a well-brewed cup of coffee. Discover the world of Jazzed Sips today!"
+      }
+    ] %>
+
+    <% about_sections.each do |section| %>
+      <%= render_about(section) %>
+    <% end %>
+
+  </section>
+
+  <% image_addresses = [
+    "https://images.unsplash.com/photo-1525193612562-0ec53b0e5d7c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+    "https://images.unsplash.com/photo-1513267048331-5611cad62e41?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+    "https://images.unsplash.com/photo-1554118811-1e0d58224f24?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1c2DP8tNTk0MTU3NDMyNTMxNjItNjU2MWU5MjEzNDA4MTQ6aWxsaWI=&auto=format&fit=crop&w=2047&q=80",
+    "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
+    "https://images.unsplash.com/photo-1485686531765-ba63b07845a7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2067&q=80",
+    "https://images.unsplash.com/photo-1502491759181-ffa0aead0076?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+    "https://images.unsplash.com/photo-1553101500-d299d5c8b089?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2067&q=80",
+    "https://images.unsplash.com/photo-1507226983735-a838615193b0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+  ] %>
+
+  <aside class="grid grid-cols-1 xl:grid-cols-2 xl:col-span-1 gap-3 content-start w-11/12 drop-shadow-2xl m-auto my-8">
+    <% image_addresses.each do |img| %>
+      <img src="<%= img %>" alt="Coffee shop image" class="object-cover rounded-xl h-full w-full">
+    <% end %>
+  </aside>
+</main>

@@ -1,10 +1,11 @@
-<nav class="relative px-4 py-4 flex justify-between items-center bg-rose-900">
+<body class="bg-amber-50">
+	<nav class="relative px-4 py-4 flex justify-between items-center bg-amber-50">
 		<a class="text-3xl font-bold leading-none" href="/">
       <%# ! Change logo to your own %>
-			<%= inline_svg "mario-s-white", class: "h-16 w-16  lg:h-32 lg:w-32 lg:ml-8" %>
+			<%= inline_svg "coffee_shop", class: "h-16 w-16  lg:h-32 lg:w-32 lg:ml-8" %>
 		</a>
 		<div class="lg:hidden">
-			<button class="navbar-burger flex items-center text-white p-3">
+			<button class="navbar-burger flex items-center text-amber-600 p-3">
 				<svg class="block h-4 w-4 fill-current" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
 					<title>Mobile menu</title>
 					<path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
@@ -21,7 +22,7 @@
 
       <% menu_items.each_with_index do |item, index| %>
         <li>
-          <%= link_to item[:text], item[:path], class: "text-lg text-white hover:text-gray-500", id: item[:id] %>
+          <%= link_to item[:text], item[:path], class: "text-lg text-gray-400 hover:text-gray-500", id: item[:id] %>
         </li>
 
         <% unless index == menu_items.size - 1 %>
@@ -43,7 +44,7 @@
 		<nav class="fixed top-0 left-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 bg-white border-r overflow-y-auto">
 			<div class="flex items-center mb-8">
 				<a class="mr-auto text-3xl font-bold leading-none" href="#">
-					<%= inline_svg "mario-s", class: "h-20 w-20 ml-4" %>
+					<%= inline_svg "coffee", class: "h-12 w-12 ml-4" %>
 				</a>
 				<button class="navbar-close">
 					<svg class="h-6 w-6 text-gray-400 cursor-pointer hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -63,10 +64,10 @@
 			</div>
 			<div class="mt-auto">
 				<div class="pt-6">
-
-					<a class="block px-4 py-3 mb-3 leading-loose text-xs text-center font-semibold bg-gray-50 hover:bg-gray-100 rounded-xl" href="#">Sign in</a>
-					<a class="block px-4 py-3 mb-2 leading-loose text-xs text-center text-white font-semibold bg-rose-600 hover:bg-amber-700  rounded-xl" href="#">Sign Up</a>
-
+          <!--
+					<a class="block px-4 py-3 mb-3 leading-loose text-xs text-center font-semibold leading-none bg-gray-50 hover:bg-gray-100 rounded-xl" href="#">Sign in</a>
+					<a class="block px-4 py-3 mb-2 leading-loose text-xs text-center text-white font-semibold bg-amber-600 hover:bg-amber-700  rounded-xl" href="#">Sign Up</a>
+          -->
 				</div>
 				<p class="my-4 text-xs text-center text-gray-400">
 					<span>Copyright © 2023</span>
@@ -74,6 +75,8 @@
 			</div>
 		</nav>
 	</div>
+</body>
+
 <script>
 $(document).ready(function() {
   const $menu = $('.navbar-menu');
@@ -102,7 +105,7 @@ $(document).ready(function() {
       $(".navbar-link").removeClass("text-amber-600 font-bold");
 
       // Add the new class to the link with the specified ID
-      $(linkId).toggleClass("text-white text-amber-600 font-bold");
+      $(linkId).toggleClass("text-gray-400 text-amber-600 font-bold");
   }
 
 
