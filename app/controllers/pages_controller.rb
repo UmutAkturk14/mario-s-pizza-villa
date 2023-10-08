@@ -12,4 +12,7 @@ class PagesController < ApplicationController
 
   def services
   end
+
+  def menu
+  end
 end

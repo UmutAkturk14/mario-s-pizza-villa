@@ -14,18 +14,16 @@
   <ul class="hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:flex lg:mx-auto lg:items-center lg:w-auto lg:space-x-6">
     <% menu_items = [
         { text: "Home", path: home_path, id: "home-link" },
+        { text: "Menu", path: menu_path, id: "menu-link" },
         { text: "About us", path: about_path, id: "about-link" },
         { text: "Services", path: services_path, id: "service-link" },
         { text: "Contact", path: contact_path, id: "contact-link" }
     ] %>
 
-
-    <%# TODO: Order page %>
-    <% menu_items.append({ text: "Text", path: "#", id: "id" }) if user_signed_in? %>
-
     <% menu_items.each_with_index do |item, index| %>
       <li>
         <%= link_to item[:text], item[:path], class: "text-lg text-white hover:text-gray-500", id: item[:id] %>
+
       </li>
 
       <% unless index == menu_items.size - 1 %>
@@ -102,6 +100,7 @@ $(document).ready(function() {
       "<%= contact_path %>": "#contact-link",
       "<%= about_path %>": "#about-link",
       "<%= services_path %>": "#service-link",
+      "<%= menu_path %>": "#menu-link",
   };
 
   // Get the current page URL
