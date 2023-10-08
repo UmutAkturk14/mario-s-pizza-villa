@@ -1,79 +1,92 @@
-<nav class="relative px-4 py-4 flex justify-between items-center bg-rose-900">
-		<a class="text-3xl font-bold leading-none" href="/">
-      <%# ! Change logo to your own %>
-			<%= inline_svg "mario-s-white", class: "h-16 w-16  lg:h-32 lg:w-32 lg:ml-8" %>
-		</a>
-		<div class="lg:hidden">
-			<button class="navbar-burger flex items-center text-white p-3">
-				<svg class="block h-4 w-4 fill-current" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-					<title>Mobile menu</title>
-					<path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
-				</svg>
-			</button>
-		</div>
-		<ul class="hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:flex lg:mx-auto lg:items-center lg:w-auto lg:space-x-6">
-      <% menu_items = [
-          { text: "Home", path: home_path, id: "home-link" },
-          { text: "About us", path: about_path, id: "about-link" },
-          { text: "Services", path: services_path, id: "service-link" },
-          { text: "Contact", path: contact_path, id: "contact-link" }
-      ] %>
+<nav class="relative px-4 py-4 flex justify-between items-center bg-rose-900  lg:w-4/5 lg:m-auto">
+  <a class="text-3xl font-bold leading-none" href="/">
+    <%# ! Change logo to your own %>
+    <%= inline_svg "mario-s-white", class: "h-16 w-16  lg:h-32 lg:w-32 lg:ml-8" %>
+  </a>
+  <div class="lg:hidden">
+    <button class="navbar-burger flex items-center text-white p-3">
+      <svg class="block h-6 w-6 fill-current" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+        <title>Mobile menu</title>
+        <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
+      </svg>
+    </button>
+  </div>
+  <ul class="hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:flex lg:mx-auto lg:items-center lg:w-auto lg:space-x-6">
+    <% menu_items = [
+        { text: "Home", path: home_path, id: "home-link" },
+        { text: "About us", path: about_path, id: "about-link" },
+        { text: "Services", path: services_path, id: "service-link" },
+        { text: "Contact", path: contact_path, id: "contact-link" }
+    ] %>
 
-      <% menu_items.each_with_index do |item, index| %>
-        <li>
-          <%= link_to item[:text], item[:path], class: "text-lg text-white hover:text-gray-500", id: item[:id] %>
+
+    <%# TODO: Order page %>
+    <% menu_items.append({ text: "Text", path: "#", id: "id" }) if user_signed_in? %>
+
+    <% menu_items.each_with_index do |item, index| %>
+      <li>
+        <%= link_to item[:text], item[:path], class: "text-lg text-white hover:text-gray-500", id: item[:id] %>
+      </li>
+
+      <% unless index == menu_items.size - 1 %>
+        <li class="text-gray-300">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" class="w-4 h-4 current-fill" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
+          </svg>
         </li>
+      <% end %>
+    <% end %>
+  </ul>
+  <div id="buttons" class="hidden lg:inline-block">
+    <% if user_signed_in? %>
+      <%= link_to "Sign out", destroy_user_session_path, class: "hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-amber-100 hover:bg-amber-200 text-sm text-gray-900 font-bold  rounded-xl transition duration-200", data: {turbo_method: :delete} %>
+    <% else %>
+      <%# Buttons that can go at the right side of the page %>
+      <%= link_to "Sign in", new_user_session_path, class: "hidden lg:inline-block py-2 px-6 bg-rose-500 hover:bg-rose-400 text-sm text-white font-bold rounded-xl transition duration-200" %>
+      <%= link_to "Sign Up", new_user_registration_path, class: "hidden lg:inline-block py-2 px-6 bg-sky-600 hover:bg-sky-500 text-sm text-white font-bold rounded-xl transition duration-200" %>
+    <% end %>
+  </div>
+</nav>
 
-        <% unless index == menu_items.size - 1 %>
-          <li class="text-gray-300">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" class="w-4 h-4 current-fill" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
-            </svg>
+<div class="navbar-menu relative z-50 hidden">
+  <div class="navbar-backdrop fixed inset-0 bg-gray-800 opacity-25"></div>
+  <nav class="fixed top-0 left-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 bg-white border-r overflow-y-auto">
+    <div class="flex items-center mb-8">
+      <a class="mr-auto text-3xl font-bold leading-none" href="#">
+        <%= inline_svg "mario-s", class: "h-20 w-20 ml-4" %>
+      </a>
+      <button class="navbar-close">
+        <svg class="h-6 w-6 text-gray-400 cursor-pointer hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+    <div>
+      <ul>
+        <% menu_items.each do |item| %>
+          <li class="mb-1">
+            <%= link_to item[:text], item[:path], class: "block p-4 text-sm font-semibold text-gray-400 hover:bg-amber-50 hover:text-amber-600 rounded" %>
           </li>
         <% end %>
-      <% end %>
-    </ul>
-    <!-- Buttons that can go at the right side of the page
-		<a class="hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-amber-100 hover:bg-amber-200 text-sm text-gray-900 font-bold  rounded-xl transition duration-200" href="#">Sign In</a>
-		<a class="hidden lg:inline-block py-2 px-6 bg-amber-600 hover:bg-amber-700 text-sm text-white font-bold rounded-xl transition duration-200" href="#">Sign up</a>
-    -->
-	</nav>
-	<div class="navbar-menu relative z-50 hidden">
-		<div class="navbar-backdrop fixed inset-0 bg-gray-800 opacity-25"></div>
-		<nav class="fixed top-0 left-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 bg-white border-r overflow-y-auto">
-			<div class="flex items-center mb-8">
-				<a class="mr-auto text-3xl font-bold leading-none" href="#">
-					<%= inline_svg "mario-s", class: "h-20 w-20 ml-4" %>
-				</a>
-				<button class="navbar-close">
-					<svg class="h-6 w-6 text-gray-400 cursor-pointer hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-					</svg>
-				</button>
-			</div>
-			<div>
-				<ul>
-          <% menu_items.each do |item| %>
-            <li class="mb-1">
-              <%= link_to item[:text], item[:path], class: "block p-4 text-sm font-semibold text-gray-400 hover:bg-amber-50 hover:text-amber-600 rounded" %>
-            </li>
-          <% end %>
-        </ul>
+      </ul>
 
-			</div>
-			<div class="mt-auto">
-				<div class="pt-6">
+    </div>
+    <div class="mt-auto">
+      <div class="pt-6">
 
-					<a class="block px-4 py-3 mb-3 leading-loose text-xs text-center font-semibold bg-gray-50 hover:bg-gray-100 rounded-xl" href="#">Sign in</a>
-					<a class="block px-4 py-3 mb-2 leading-loose text-xs text-center text-white font-semibold bg-rose-600 hover:bg-amber-700  rounded-xl" href="#">Sign Up</a>
+        <a class="block px-4 py-3 mb-3 leading-loose text-xs text-center font-semibold bg-gray-50 hover:bg-gray-100 rounded-xl" href="#">Sign in</a>
+        <a class="block px-4 py-3 mb-2 leading-loose text-xs text-center text-white font-semibold bg-rose-600 hover:bg-amber-700  rounded-xl" href="#">Sign Up</a>
 
-				</div>
-				<p class="my-4 text-xs text-center text-gray-400">
-					<span>Copyright © 2023</span>
-				</p>
-			</div>
-		</nav>
-	</div>
+      </div>
+      <p class="my-4 text-xs text-center text-gray-400">
+        <span>Copyright © 2023</span>
+      </p>
+    </div>
+  </nav>
+</div>
+
+
+
 <script>
 $(document).ready(function() {
   const $menu = $('.navbar-menu');

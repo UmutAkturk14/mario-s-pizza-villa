@@ -1,70 +1,59 @@
 <% content_for :title, "Services" %>
 
 <main class="page-content gap-6 mt-2 w-full lg:w-1/3 mx-auto ">
-  <p class="font-bold text-4xl mt-4 font-heading text-center underline underline-offset-4">Our services</p>
+  <p class="font-bold text-4xl mt-4 text-white font-heading text-center underline underline-offset-4">Our services</p>
   <section class="flex-grow gap-4 w-full text-justify col-span-1 p-4 justify-center">
     <% services = [
       {
-        title: "Artisan Coffee Selection",
-        content: "Jazzed Sips offers a curated selection of artisanal coffee beans from around the world, ensuring coffee enthusiasts can savor the finest brews.",
-        image: "https://images.unsplash.com/photo-1655475782112-a6302e5b415f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-        alt: "Coffee beans"
+        title: "Authentic Italian Pizzas",
+        content: "Mario's Pizza Villa offers a selection of authentic Italian pizzas crafted with the finest ingredients, ensuring a taste of Italy in every slice.",
+        image: "https://images.unsplash.com/photo-1652539616341-93a908bcca2e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8QXV0aGVudGljJTIwSXRhbGlhbiUyMFBpenphfGVufDB8MHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60",
+        alt: "Authentic Italian Pizza"
       },
       {
-        title: "Specialty Drinks",
-        content: "In addition to classic coffee offerings, the shop provides a menu of specialty coffee drinks such as cappuccinos, lattes, and macchiatos, each crafted with care and creativity.",
-        image: "https://images.unsplash.com/photo-1634863617638-49edc8a6294a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1904&q=80",
-        alt: "Specialty drinks"
+        title: "Signature Pizza Creations",
+        content: "In addition to traditional favorites, we present our signature pizza creations, such as the Villa Supreme and Mario's Special, each designed to delight your taste buds.",
+        image: "https://images.unsplash.com/photo-1528830984461-4d5c3cc1abf0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1931&q=80",
+        alt: "Signature Pizza Creations"
       },
       {
-        title: "Live Jazz Performances",
-        content: "Jazzed Sips hosts live jazz performances once a week, creating a unique and vibrant atmosphere where patrons can enjoy music with their coffee.",
-        image: "https://images.unsplash.com/photo-1577369256636-2c077eec9abc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2090&q=80",
-        alt: "Live jazz"
+        title: "Live Music Nights",
+        content: "Mario's Pizza Villa hosts live music nights where talented local artists entertain you with soft jazz while you savor our delicious pizzas. It's a dining experience like no other.",
+        image: "https://images.unsplash.com/photo-1501492765677-f07c5f3d87db?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2076&q=80",
+        alt: "Live Music Nights"
       },
       {
-        title: "Book Nook",
-        content: "The coffee shop has a cozy 'Book Nook' where customers can browse and borrow books, fostering a sense of community and intellectual engagement.",
-        image: "https://images.unsplash.com/photo-1533327325824-76bc4e62d560?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80",
-        alt: "Book nook"
+        title: "Cozy Dining Atmosphere",
+        content: "Enjoy your pizza in our cozy dining area, complete with warm lighting and Italian-inspired decor, creating the perfect ambiance for a memorable meal.",
+        image: "https://images.unsplash.com/photo-1617333907797-1bac8b33af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1876&q=80",
+        alt: "Cozy Dining Atmosphere"
       },
       {
-        title: "Homemade Cookies",
-        content: "Complementing the coffee, Jazzed Sips bakes fresh, homemade cookies daily, offering a delightful treat to pair with your favorite brew.",
-        image: "https://images.unsplash.com/photo-1618828599549-688da17cf56c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-        alt: "Homemade cookie"
+        title: "Fresh Baked Desserts",
+        content: "Complement your pizza with our freshly baked desserts, including delectable cookies and mouthwatering tiramisu, made with love daily.",
+        image: "https://images.unsplash.com/photo-1629856428025-8689654d9fd2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80",
+        alt: "Fresh Baked Desserts"
       },
       {
         title: "Outdoor Seating",
-        content: "For those who prefer to enjoy their coffee in the open air, the shop provides outdoor seating, allowing customers to soak in the atmosphere of the neighborhood.",
-        image: "https://images.unsplash.com/photo-1571515476930-f59475a66a58?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80",
-        alt: "Outdoor seating"
+        content: "Prefer to dine al fresco? We offer outdoor seating so you can savor your pizza while soaking in the vibrant atmosphere of our neighborhood.",
+        image: "https://images.unsplash.com/photo-1619855467492-4a1d92ad27ce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+        alt: "Outdoor Seating"
       },
       {
         title: "Free Wi-Fi",
-        content: "Jazzed Sips offers free Wi-Fi, making it an ideal spot for remote work, studying, or catching up on emails while sipping on coffee.",
-        image: "https://images.unsplash.com/photo-1600238454024-bc8c1e49caba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2065&q=80",
+        content: "Stay connected while enjoying your pizza with our free Wi-Fi, making it an ideal spot for remote work, studying, or sharing your pizza experience online.",
+        image: "https://images.unsplash.com/photo-1526411116157-21b2b172c6bc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
         alt: "Free Wi-Fi"
       },
       {
-        title: "Private Events",
-        content: "The coffee shop is available for private events and gatherings, including book club meetings, small parties, and workshops.",
-        image: "https://images.unsplash.com/photo-1527529482837-4698179dc6ce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-        alt: "Private events"
-      },
-      {
         title: "Catering Services",
-        content: "Jazzed Sips provides catering services for local events and meetings, delivering quality coffee and pastries to your location.",
-        image: "https://images.unsplash.com/photo-1662982692022-d52aa6c10c5d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
-        alt: "Croissants"
-      },
-      {
-        title: "Jazz Merchandise",
-        content: "For jazz enthusiasts, the shop offers a selection of jazz-themed merchandise, including T-shirts, mugs, and vinyl records.",
-        image: "https://images.unsplash.com/photo-1549477606-43a329b26066?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-        alt: "Vinyl"
+        content: "Planning an event? Let us bring our delicious pizza and Italian delights to your location with our catering services, ensuring a taste of Mario's at your event.",
+        image: "https://images.unsplash.com/photo-1610472487806-36e3f7bca240?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+        alt: "Catering Services"
       }
     ] %>
+
 
     <% services.each do |service| %>
       <%= render_service(service) %>
