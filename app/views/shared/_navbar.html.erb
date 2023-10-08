@@ -1,181 +1,131 @@
-
-<nav class="bg-rose-900 sticky top-0 z-50">
-
-  <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-
-    <div class="relative flex h-16 items-center justify-between">
-
-      <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
-
-
-        <!-- Mobile menu button-->
-        <button type="button" class="relative inline-flex items-center justify-center rounded-md p-2 text-white focus:outline-none focus:ring-0" aria-controls="mobile-menu" aria-expanded="false" id="mobile-menu-button">
-          <span class="absolute -inset-0.5"></span>
-          <span class="sr-only">Open main menu</span>
-          <!--
-            Icon when menu is closed.
-
-            Menu open: "hidden", Menu closed: "block"
-          -->
-          <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-          </svg>
-          <!--
-            Icon when menu is open.
-
-            Menu open: "block", Menu closed: "hidden"
-          -->
-          <svg class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </button>
-      </div>
-
-      <div class="flex flex-1 items-center justify-center md:items-stretch sm:justify-start">
-
-
-        <div class="flex flex-shrink-0 items-center">
-          <%# ! Here goes logo %>
-        </div>
-        <div class="hidden sm:ml-6 sm:block md:flex items-center justify-center">
-          <div class="flex items-center justify-center space-x-4">
-            <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-            <a href="#" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium duration-500" aria-current="page">Home</a>
-            <a href="#" class="text-gray-300 hover:bg-rose-600 hover:text-white rounded-md px-3 py-2 text-sm font-medium duration-500">Section</a>
-            <a href="#" class="text-gray-300 hover:bg-rose-600 hover:text-white rounded-md px-3 py-2 text-sm font-medium duration-500">Section</a>
-            <a href="#" class="text-gray-300 hover:bg-rose-600 hover:text-white rounded-md px-3 py-2 text-sm font-medium duration-500">Section</a>
-            <%= link_to "#", class: "no-underline " do %>
-              <button class="text-white bg-orange-700 hover:bg-orange-600 transition duration-200  hover:text-white rounded-md px-3 py-2 text-sm font-medium">Section</button>
-            <% end %>
-          </div>
-        </div>
-      </div>
-      <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-
-        <!-- Profile dropdown -->
-        <% if user_signed_in? %>
-        <%= link_to "#" do  %>
-          <button type="button" class="mr-2 relative rounded-full bg-rose-900 p-1 text-gray-500 hover:text-white focus:outline-none">
-          <span class="absolute -inset-1.5"></span>
-          <span class="sr-only">View notifications</span>
-          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-envelope h-6 w-6" viewBox="0 0 16 16"> <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/> </svg>
-        </button>
-        <% end %>
-
-        <button type="button" class="mr-2 relative rounded-full bg-rose-900 p-1 text-gray-500 hover:text-white focus:outline-none">
-          <span class="absolute -inset-1.5"></span>
-          <span class="sr-only">View notifications</span>
-          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
-          </svg>
-        </button>
-          <div class="relative ml-3">
-            <div>
-              <button type="button" class="relative flex rounded-full bg-rose-900 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
-                <span class="absolute -inset-1.5" id="dropdown-btn"></span>
-                <span class="sr-only">Open user menu</span>
-
-                <%# ! Add profile photo here, if needed %>
-                  <div class="h-8 w-8 rounded-full">
-                    <svg style="color: white" viewBox="0 0 21 21" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" transform="translate(2 2)"><circle cx="8.5" cy="8.5" r="8"></circle><path d="m14.5 13.5c-.6615287-2.2735217-3.1995581-3.0251263-6-3.0251263-2.72749327 0-5.27073171.8688092-6 3.0251263" fill="white"></path><path d="m8.5 2.5c1.6568542 0 3 1.34314575 3 3v2c0 1.65685425-1.3431458 3-3 3-1.65685425 0-3-1.34314575-3-3v-2c0-1.65685425 1.34314575-3 3-3z" fill="white"></path></g></svg>
-                  </div>
-
-              </button>
-            </div>
-
-            <!--
-              Dropdown menu, show/hide based on menu state.
-
-              Entering: "transition ease-out duration-100"
-                From: "transform opacity-0 scale-95"
-                To: "transform opacity-100 scale-100"
-              Leaving: "transition ease-in duration-75"
-                From: "transform opacity-100 scale-100"
-                To: "transform opacity-0 scale-95"
-            -->
-            <div class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none hidden" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1" id="profile-dropdown">
-              <!-- Active: "bg-gray-100", Not Active: "" -->
-
-              <%= link_to "#", class: "no-underline " do %>
-                <button class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-700 hover:text-white w-full rounded-md" role="menuitem" tabindex="-1" id="user-menu-item-0">Your Profile</button>
-              <% end %>
-
-              <%= link_to "#", class: "no-underline " do %>
-                <button class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-700 hover:text-white w-full rounded-md" role="menuitem" tabindex="-1" id="user-menu-item-1">Settings</button>
-              <% end %>
-
-              <%= link_to destroy_user_session_path, data: {turbo_method: :delete},class: "no-underline " do %>
-                <button class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-700 hover:text-white w-full rounded-md" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</button>
-              <% end %>
-            </div>
-          </div>
-        <% else %>
-          <%= link_to new_user_session_path, class: "flex justify-center align-center" do %>
-            <button type="button" class="text-white bg-blue-500 hover:bg-blue-600 transition duration-200  hover:text-white rounded-md px-3 py-2 text-sm font-medium">Log in</button>
-          <% end %>
-          <button type="button" class="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 shadow-lg shadow-cyan-500/50 dark:shadow-lg dark:shadow-cyan-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center fixed bottom-3 right-6 z-50 sm:hidden" id="back-button">
-            <span class="flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-6 h-6 fill-current text-white mr-1 -ml-3">
-                    <defs><style>.cls-1{fill:#fff;opacity:0;}.cls-2{fill:#231f20;}</style></defs>
-                    <title>arrow-ios-back</title>
-                    <g id="Layer_2" data-name="Layer 2">
-                        <g id="arrow-ios-back">
-                            <g id="arrow-ios-back-2" data-name="arrow-ios-back">
-                                <rect class="cls-1" transform="translate(24 0) rotate(90)"/>
-                                <path class="cls-2" d="M13.83,19a1,1,0,0,1-.78-.37l-4.83-6a1,1,0,0,1,0-1.27l5-6a1,1,0,0,1,1.54,1.28L10.29,12l4.32,5.36A1,1,0,0,1,13.83,19Z"/>
-                            </g>
-                        </g>
-                    </g>
-                </svg>
-                <span>Back</span>
-            </span>
-          </button>
-        <% end %>
-      </div>
-    </div>
+<nav class="relative px-4 py-4 flex justify-between items-center bg-rose-900  lg:w-4/5 lg:m-auto">
+  <a class="text-3xl font-bold leading-none" href="/">
+    <%# ! Change logo to your own %>
+    <%= inline_svg "mario-s-white", class: "h-16 w-16  lg:h-32 lg:w-32 lg:ml-8" %>
+  </a>
+  <div class="lg:hidden">
+    <button class="navbar-burger flex items-center text-white p-3">
+      <svg class="block h-6 w-6 fill-current" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+        <title>Mobile menu</title>
+        <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
+      </svg>
+    </button>
   </div>
+  <ul class="hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:flex lg:mx-auto lg:items-center lg:w-auto lg:space-x-6">
+    <% menu_items = [
+        { text: "Home", path: home_path, id: "home-link" },
+        { text: "Menu", path: menu_path, id: "menu-link" },
+        { text: "About us", path: about_path, id: "about-link" },
+        { text: "Services", path: services_path, id: "service-link" },
+        { text: "Contact", path: contact_path, id: "contact-link" }
+    ] %>
 
-  <!-- Mobile menu, show/hide based on menu state. -->
-  <div class="hidden sm:hidden" id="mobile-menu">
-    <div class="space-y-1 px-2 pb-3 pt-2">
-      <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-      <a href="/home" class="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium" aria-current="page">Home</a>
-      <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Section</a>
-      <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Section</a>
-      <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Section</a>
-      <%= link_to "Sign Up", new_user_registration_path, class: "text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"  %>
-    </div>
+    <% menu_items.each_with_index do |item, index| %>
+      <li>
+        <%= link_to item[:text], item[:path], class: "text-lg text-white hover:text-gray-500", id: item[:id] %>
+
+      </li>
+
+      <% unless index == menu_items.size - 1 %>
+        <li class="text-gray-300">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" class="w-4 h-4 current-fill" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
+          </svg>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+  <div id="buttons" class="hidden lg:inline-block">
+    <% if user_signed_in? %>
+      <%= link_to "Sign out", destroy_user_session_path, class: "hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-amber-100 hover:bg-amber-200 text-sm text-gray-900 font-bold  rounded-xl transition duration-200", data: {turbo_method: :delete} %>
+    <% else %>
+      <%# Buttons that can go at the right side of the page %>
+      <%= link_to "Sign in", new_user_session_path, class: "hidden lg:inline-block py-2 px-6 bg-rose-500 hover:bg-rose-400 text-sm text-white font-bold rounded-xl transition duration-200" %>
+      <%= link_to "Sign Up", new_user_registration_path, class: "hidden lg:inline-block py-2 px-6 bg-sky-600 hover:bg-sky-500 text-sm text-white font-bold rounded-xl transition duration-200" %>
+    <% end %>
   </div>
 </nav>
+
+<div class="navbar-menu relative z-50 hidden">
+  <div class="navbar-backdrop fixed inset-0 bg-gray-800 opacity-25"></div>
+  <nav class="fixed top-0 left-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 bg-white border-r overflow-y-auto">
+    <div class="flex items-center mb-8">
+      <a class="mr-auto text-3xl font-bold leading-none" href="#">
+        <%= inline_svg "mario-s", class: "h-20 w-20 ml-4" %>
+      </a>
+      <button class="navbar-close">
+        <svg class="h-6 w-6 text-gray-400 cursor-pointer hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+    <div>
+      <ul>
+        <% menu_items.each do |item| %>
+          <li class="mb-1">
+            <%= link_to item[:text], item[:path], class: "block p-4 text-sm font-semibold text-gray-400 hover:bg-amber-50 hover:text-amber-600 rounded" %>
+          </li>
+        <% end %>
+      </ul>
+
+    </div>
+    <div class="mt-auto">
+      <div class="pt-6">
+
+        <a class="block px-4 py-3 mb-3 leading-loose text-xs text-center font-semibold bg-gray-50 hover:bg-gray-100 rounded-xl" href="#">Sign in</a>
+        <a class="block px-4 py-3 mb-2 leading-loose text-xs text-center text-white font-semibold bg-rose-600 hover:bg-amber-700  rounded-xl" href="#">Sign Up</a>
+
+      </div>
+      <p class="my-4 text-xs text-center text-gray-400">
+        <span>Copyright © 2023</span>
+      </p>
+    </div>
+  </nav>
+</div>
 
 
 
 <script>
-$(document).ready(function () {
+$(document).ready(function() {
+  const $menu = $('.navbar-menu');
 
-  if (window.location.href === "http://127.0.0.1:3000/home") {
-    $("#back-button").hide();
-    } else {
-    $("#back-button").click(function() {
-      window.history.back();
-    });
-  }
-
-  $("#dropdown-btn").click(function () {
-    console.log($("#dropdown-btn"));
-    $("#profile-dropdown").slideToggle(200);
-  })
-
-  $("#mobile-menu-button").click(function () {
-    console.log("button clicked")
-    $("#mobile-menu").slideToggle();
-  })
-
-  $("#back-button").click(function() {
-    console.log(document.referrer);
-    window.history.back();
+  // Toggle menu visibility on burger, close, and backdrop clicks
+  $(document).on('click', '.navbar-burger, .navbar-close, .navbar-backdrop', function() {
+      $menu.fadeToggle(400);
   });
 
-});
+  // Define a mapping of URLs to link IDs
+  const urlToLinkId = {
+      "<%= home_path %>": "#home-link",
+      "<%= contact_path %>": "#contact-link",
+      "<%= about_path %>": "#about-link",
+      "<%= services_path %>": "#service-link",
+      "<%= menu_path %>": "#menu-link",
+  };
 
+  // Get the current page URL
+  const currentURL = window.location.pathname;
+
+  // Determine the corresponding link ID based on the current URL
+  const linkId = urlToLinkId[currentURL];
+
+  if (linkId) {
+      // Remove the "text-amber-600 font-bold" class from all links
+      $(".navbar-link").removeClass("text-amber-600 font-bold");
+
+      // Add the new class to the link with the specified ID
+      $(linkId).toggleClass("text-white text-amber-600 font-bold");
+  }
+
+
+  $("nav ul a").click(function (e) {
+    e.preventDefault();
+    const url = $(this).attr("href");
+    $(".page-content").fadeOut(500, function() {
+      window.location.href = url;
+    });
+  });
+
+
+});
 </script>

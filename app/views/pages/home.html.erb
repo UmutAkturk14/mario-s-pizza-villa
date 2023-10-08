@@ -5,7 +5,16 @@
     <img src="https://images.unsplash.com/photo-1584859977999-531c305575b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="" class="w-full h-[75vh] object-cover my-8">
     <div class="text-white absolute p-2 top-0 h-full w-full flex flex-col justify-center">
       <p class="text-6xl text-center font-bold drop-shadow-3xl font-heading shadow-rose-900">Mario's Pizza Villa</p>
-      <p class="text-3xl text-center mt-6 drop-shadow-3xl italic font-heading shadow-rose-900">Crafting magic</p>
+      <div class="text-3xl text-center mt-6 drop-shadow-3xl italic font-heading shadow-rose-900">
+        Crafting
+        <div class="relative inline-grid grid-cols-1 grid-rows-1 gap-12 overflow-hidden">
+          <span class="animate-word col-span-full row-span-full">Magic</span>
+          <span class="animate-word-delay-1 col-span-full row-span-full">Moments</span>
+          <span class="animate-word-delay-2 col-span-full row-span-full">Smiles</span>
+          <span class="animate-word-delay-3 col-span-full row-span-full">Joy</span>
+          <span class="animate-word-delay-4 col-span-full row-span-full">Satisfaction</span>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -24,3 +33,45 @@
 </div>
 
 </main>
+<style>
+
+@keyframes word {
+  0% {
+    transform: translateY(100%);
+  }
+  15% {
+    transform: translateY(-10%);
+    animation-timing-function: ease-out;
+  }
+
+  20% {
+    transform: translateY(0);
+  }
+
+  40%,
+  100% {
+    transform: translateY(-110%);
+  }
+}
+
+.animate-word {
+  animation: word 7s infinite;
+}
+.animate-word-delay-1 {
+  animation: word 7s infinite;
+  animation-delay: -1.4s;
+}
+.animate-word-delay-2 {
+  animation: word 7s infinite;
+  animation-delay: -2.8s;
+}
+.animate-word-delay-3 {
+  animation: word 7s infinite;
+  animation-delay: -4.2s;
+}
+.animate-word-delay-4 {
+  animation: word 7s infinite;
+  animation-delay: -5.6s;
+}
+
+</style>

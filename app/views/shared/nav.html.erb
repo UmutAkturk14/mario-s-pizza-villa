@@ -1,0 +1,122 @@
+<body class="bg-amber-50">
+	<nav class="relative px-4 py-4 flex justify-between items-center bg-amber-50">
+		<a class="text-3xl font-bold leading-none" href="/">
+      <%# ! Change logo to your own %>
+			<%= inline_svg "coffee_shop", class: "h-16 w-16  lg:h-32 lg:w-32 lg:ml-8" %>
+		</a>
+		<div class="lg:hidden">
+			<button class="navbar-burger flex items-center text-amber-600 p-3">
+				<svg class="block h-4 w-4 fill-current" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+					<title>Mobile menu</title>
+					<path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
+				</svg>
+			</button>
+		</div>
+		<ul class="hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:flex lg:mx-auto lg:items-center lg:w-auto lg:space-x-6">
+      <% menu_items = [
+          { text: "Home", path: home_path, id: "home-link" },
+          { text: "About us", path: about_path, id: "about-link" },
+          { text: "Services", path: services_path, id: "service-link" },
+          { text: "Contact", path: contact_path, id: "contact-link" }
+      ] %>
+
+      <% menu_items.each_with_index do |item, index| %>
+        <li>
+          <%= link_to item[:text], item[:path], class: "text-lg text-gray-400 hover:text-gray-500", id: item[:id] %>
+        </li>
+
+        <% unless index == menu_items.size - 1 %>
+          <li class="text-gray-300">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" class="w-4 h-4 current-fill" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
+            </svg>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+    <!-- Buttons that can go at the right side of the page
+		<a class="hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-amber-100 hover:bg-amber-200 text-sm text-gray-900 font-bold  rounded-xl transition duration-200" href="#">Sign In</a>
+		<a class="hidden lg:inline-block py-2 px-6 bg-amber-600 hover:bg-amber-700 text-sm text-white font-bold rounded-xl transition duration-200" href="#">Sign up</a>
+    -->
+	</nav>
+	<div class="navbar-menu relative z-50 hidden">
+		<div class="navbar-backdrop fixed inset-0 bg-gray-800 opacity-25"></div>
+		<nav class="fixed top-0 left-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 bg-white border-r overflow-y-auto">
+			<div class="flex items-center mb-8">
+				<a class="mr-auto text-3xl font-bold leading-none" href="#">
+					<%= inline_svg "coffee", class: "h-12 w-12 ml-4" %>
+				</a>
+				<button class="navbar-close">
+					<svg class="h-6 w-6 text-gray-400 cursor-pointer hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+					</svg>
+				</button>
+			</div>
+			<div>
+				<ul>
+          <% menu_items.each do |item| %>
+            <li class="mb-1">
+              <%= link_to item[:text], item[:path], class: "block p-4 text-sm font-semibold text-gray-400 hover:bg-amber-50 hover:text-amber-600 rounded" %>
+            </li>
+          <% end %>
+        </ul>
+
+			</div>
+			<div class="mt-auto">
+				<div class="pt-6">
+          <!--
+					<a class="block px-4 py-3 mb-3 leading-loose text-xs text-center font-semibold leading-none bg-gray-50 hover:bg-gray-100 rounded-xl" href="#">Sign in</a>
+					<a class="block px-4 py-3 mb-2 leading-loose text-xs text-center text-white font-semibold bg-amber-600 hover:bg-amber-700  rounded-xl" href="#">Sign Up</a>
+          -->
+				</div>
+				<p class="my-4 text-xs text-center text-gray-400">
+					<span>Copyright © 2023</span>
+				</p>
+			</div>
+		</nav>
+	</div>
+</body>
+
+<script>
+$(document).ready(function() {
+  const $menu = $('.navbar-menu');
+
+  // Toggle menu visibility on burger, close, and backdrop clicks
+  $(document).on('click', '.navbar-burger, .navbar-close, .navbar-backdrop', function() {
+      $menu.fadeToggle(400);
+  });
+
+  // Define a mapping of URLs to link IDs
+  const urlToLinkId = {
+      "<%= home_path %>": "#home-link",
+      "<%= contact_path %>": "#contact-link",
+      "<%= about_path %>": "#about-link",
+      "<%= services_path %>": "#service-link",
+  };
+
+  // Get the current page URL
+  const currentURL = window.location.pathname;
+
+  // Determine the corresponding link ID based on the current URL
+  const linkId = urlToLinkId[currentURL];
+
+  if (linkId) {
+      // Remove the "text-amber-600 font-bold" class from all links
+      $(".navbar-link").removeClass("text-amber-600 font-bold");
+
+      // Add the new class to the link with the specified ID
+      $(linkId).toggleClass("text-gray-400 text-amber-600 font-bold");
+  }
+
+
+  $("nav ul a").click(function (e) {
+    e.preventDefault();
+    const url = $(this).attr("href");
+    $(".page-content").fadeOut(500, function() {
+      window.location.href = url;
+    });
+  });
+
+
+});
+</script>
