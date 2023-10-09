@@ -1,0 +1,20 @@
+
+<% content_for :title, "Menu" %>
+<main class="grid mx-2 lg:mx-6 xl:mx-40 m-auto grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-4">
+  <% @menu.each do |item| %>
+    <div class="border-4 bg-gray-100 flex flex-col gap-4">
+      <img src="https://plus.unsplash.com/premium_photo-1661517302764-a5fa40c34bf0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="Coffee shop image" class="object-cover rounded-xl h-full w-full">
+      <div class="">
+        <p class="font-heading text-2xl drop-shadow-2xl"><%= item.title %></p>
+        <p class="text-base drop-shadow-mg text-gray-700"><%= item.description %></p>
+        <div class="w-full flex justify-between items-end font-bold my-1">
+          <%# Cart SVG %>
+          <button class="hover:bg-red-300 p-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 512 512"><title>ionicons-v5-d</title><circle cx="176" cy="416" r="16" style="fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"/><circle cx="400" cy="416" r="16" style="fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"/><polyline points="48 80 112 80 160 352 416 352" style="fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"/><path d="M160,288H409.44a8,8,0,0,0,7.85-6.43l28.8-144a8,8,0,0,0-7.85-9.57H128" style="fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"/></svg>
+          </button>
+          <p class="text-base drop-shadow-mg"><%= item.price %></p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</main>
