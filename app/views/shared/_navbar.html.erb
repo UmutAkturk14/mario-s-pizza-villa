@@ -1,4 +1,4 @@
-<nav class="relative px-4 py-4 flex justify-between items-center bg-rose-900  w-full lg:m-auto">
+<nav class="relative px-4 py-4 flex justify-between items-center bg-rose-900  lg:w-4/5 lg:m-auto">
   <a class="text-3xl font-bold leading-none" href="/">
     <%# ! Change logo to your own %>
     <%= inline_svg "mario-s-white", class: "h-16 w-16  lg:h-32 lg:w-32 lg:ml-8" %>
@@ -37,7 +37,18 @@
   </ul>
   <div id="buttons" class="hidden lg:inline-block">
     <% if user_signed_in? %>
-      <%= link_to "Sign out", destroy_user_session_path, class: "hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-amber-100 hover:bg-amber-200 text-sm text-gray-900 font-bold  rounded-xl transition duration-200", data: {turbo_method: :delete} %>
+
+      <div class="flex justify-center items-center gap-4">
+        <div class="relative hover:bg-amber-100 duration-300 rounded-full flex justify-center p-3" id="cart-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-cart3 w-6 h-6 fill-gray-300" viewBox="0 0 16 16"><title>Checkout</title> <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/> </svg>
+          <%# TODO: If there's items in the cart %>
+          <% cart = current_user.orders.find_by(status: :pending) %>
+          <% unless OrderItem.where(order: cart).empty? %>
+            <button class="absolute top-1.5 right-1.5 w-2 h-2 bg-red-600 rounded-full"></button>
+          <% end %>
+        </div>
+        <%= link_to "Sign out", destroy_user_session_path, class: "hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-amber-100 hover:bg-amber-200 text-sm text-gray-900 font-bold  rounded-xl transition duration-200", data: {turbo_method: :delete} %>
+      </div>
     <% else %>
       <%# Buttons that can go at the right side of the page %>
       <%= link_to "Sign in", new_user_session_path, class: "hidden lg:inline-block py-2 px-6 bg-rose-500 hover:bg-rose-400 text-sm text-white font-bold rounded-xl transition duration-200" %>
@@ -125,6 +136,21 @@ $(document).ready(function() {
       window.location.href = url;
     });
   });
+
+  $("#cart-icon").hover(function () {
+      // over
+      const btn = $(this).find("button")
+      const svg = $(this).find("svg")
+      $(svg).toggleClass("fill-gray-300 fill-gray-900")
+      $(btn).toggleClass("bg-red-600 bg-black");
+    }, function () {
+      // out
+      const btn = $(this).find("button")
+      const svg = $(this).find("svg")
+      $(svg).toggleClass("fill-gray-300 fill-gray-900")
+      $(btn).toggleClass("bg-red-600 bg-black");
+    }
+  );
 
 
 });

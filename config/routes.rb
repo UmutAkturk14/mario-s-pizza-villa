@@ -9,4 +9,10 @@ Rails.application.routes.draw do
   get "/contact", to: "pages#contact"
   get "/services", to: "pages#services"
   get "/menu", to: "pages#menu"
+
+  # Add item to cart
+  post "items/:id/add_to_cart", to: "items#add_to_cart", as: "add_to_cart"
+
+  # Order page
+
 end
