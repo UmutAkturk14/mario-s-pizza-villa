@@ -10,7 +10,10 @@ class ItemsController < ApplicationController
     order = Order.find_or_create_by(user: current_user, status: "pending")
     # Add the item to the order
     # OrderItem.create(order: order, item: item)
-    OrderItem.find_or_create_by(order: order, item: item)
+    order_item = OrderItem.find_or_create_by(order: order, item: item)
+    order_item.quantity.nil? ? order_item.quantity = 1 : order_item.quantity += 1
+    order_item.save!
+
     redirect_to menu_path
   end
 end
