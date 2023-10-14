@@ -10,11 +10,14 @@ Rails.application.routes.draw do
   get "/contact", to: "pages#contact"
   get "/services", to: "pages#services"
   get "/menu", to: "pages#menu"
+  get "/dashboard", to: "pages#dashboard"
 
   # Add item to cart
   post "items/:id/add_to_cart", to: "items#add_to_cart", as: "add_to_cart"
+  post "items/:id/archive_item", to: "items#archive_item", as: "archive_item"
 
   # Order page
   resources :order_items, only: [:destroy]
+  resources :items, only: [:create]
 
 end

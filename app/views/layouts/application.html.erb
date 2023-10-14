@@ -24,7 +24,7 @@
   </head>
 
   <body class="flex flex-col min-h-screen m-0 bg-rose-900 animate-fade-in">
-    <% if request.original_fullpath == new_user_session_path || request.original_fullpath == new_user_registration_path %>
+    <% if request.original_fullpath == new_user_session_path || request.original_fullpath == new_user_registration_path || request.original_fullpath == dashboard_path %>
       <%= yield %>
     <% else %>
       <%= render "shared/navbar" %>
