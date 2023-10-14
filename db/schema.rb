@@ -37,7 +37,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_11_144410) do
   create_table "orders", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.datetime "order_date"
-    t.decimal "total_price"
+    t.decimal "total_price", precision: 8, scale: 2, default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "status", default: "pending", null: false

@@ -13,6 +13,8 @@ class ItemsController < ApplicationController
     order_item = OrderItem.find_or_create_by(order: order, item: item)
     order_item.quantity.nil? ? order_item.quantity = 1 : order_item.quantity += 1
     order_item.save!
+    order.total_price += order_item.item.price.to_d
+    order.save!
 
     redirect_to menu_path
   end
