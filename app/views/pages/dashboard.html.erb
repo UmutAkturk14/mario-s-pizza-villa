@@ -564,98 +564,101 @@
           </div>
         </div>
 
-        <div class="flex justify-between">
-          <h3 class="mt-6 text-xl">Menu</h3>
-          <button id="add-button" class="mt-6 text-lg text-black hover:text-white bg-emerald-300 hover:bg-emerald-500 p-1 rounded-lg duration-300 cursor-default" onclick="openForm()">Add item</button>
-        </div>
-        <div class="flex flex-col mt-6">
-          <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-            <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
-              <div class="overflow-hidden border-b border-gray-200 rounded-md shadow-md">
-                <table class="min-w-full overflow-x-scroll divide-y divide-gray-200">
-                  <thead class="bg-gray-50">
-                    <tr>
-                      <th
-                        scope="col"
-                        class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
-                      >
-                        Title
-                      </th>
-                      <th
-                        scope="col"
-                        class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
-                      >
-                        Description
-                      </th>
-                      <th
-                        scope="col"
-                        class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
-                      >
-                        Status
-                      </th>
-                      <th
-                        scope="col"
-                        class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
-                      >
-                        Price
-                      </th>
-                      <th scope="col" class="relative px-6 py-3">
-                        <span class="sr-only">Edit</span>
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody class="bg-white divide-y divide-gray-200">
-
-                    <% @items.each do |item| %>
-                      <tr id="row-item-<%= item.id %>" class="transition-all hover:bg-gray-100 hover:shadow-lg">
-                        <td class="px-6 py-4 whitespace-nowrap">
-                          <div class="flex items-center">
-                            <div class="flex-shrink-0 w-10 h-10">
-                              <%# TODO: Here goes item image %>
-
-                              <% if item.image.attached? %>
-                                <%= cl_image_tag item.image.key, class: "w-10 h-10 rounded-lg" %>
-                              <% else %>
-                                <img
-                                class="w-10 h-10 rounded-full"
-                                src="https://avatars0.githubusercontent.com/u/57622665?s=460&u=8f581f4c4acd4c18c33a87b3e6476112325e8b38&v=4"
-                                alt=""
-                              />
-                              <% end %>
-
-                            </div>
-                            <div class="ml-4">
-                              <%= tag.p item.title, class: "text-sm font-medium text-gray-900" %>
-                              <%= tag.p item.item_type, class: "text-sm font-medium text-gray-600" %>
-                            </div>
-                          </div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                          <%= tag.p item.description, class: "text-sm text-gray-900" %>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-
-
-                          <span
-                            class="inline-flex px-2 text-xs font-semibold leading-5 text-green-800 bg-green-100 rounded-full"
-                          >
-                            Active
-                          </span>
-                        </td>
-                        <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">$ <%= item.price %></td>
-                        <td class="px-6 py-4 text-sm font-medium text-right whitespace-nowrap flex justify-end mt-2 ml-2 h-full gap-1">
-                          <a href="#" class=" bg-emerald-300 p-1 rounded-md">Edit</a>
-                          <%= button_to "Remove", archive_item_path(item), method: :post, class: "bg-red-300 text-black p-1 rounded-md", data: { confirm: "Are you sure you want to remove this item?" } %>
-                        </td>
+        <div id="menu">
+          <div class="flex justify-between">
+            <h3 class="mt-6 text-xl">Menu</h3>
+            <button id="add-button" class="mt-6 text-lg text-black hover:text-white bg-emerald-300 hover:bg-emerald-500 p-1 rounded-lg duration-300 cursor-default" onclick="openForm()">Add item</button>
+          </div>
+          <div class="flex flex-col mt-6">
+            <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+              <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+                <div class="overflow-hidden border-b border-gray-200 rounded-md shadow-md">
+                  <table class="min-w-full overflow-x-scroll divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                      <tr>
+                        <th
+                          scope="col"
+                          class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
+                        >
+                          Title
+                        </th>
+                        <th
+                          scope="col"
+                          class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
+                        >
+                          Description
+                        </th>
+                        <th
+                          scope="col"
+                          class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
+                        >
+                          Status
+                        </th>
+                        <th
+                          scope="col"
+                          class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
+                        >
+                          Price
+                        </th>
+                        <th scope="col" class="relative px-6 py-3">
+                          <span class="sr-only">Edit</span>
+                        </th>
                       </tr>
-                    <% end %>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
 
-                  </tbody>
-                </table>
+                      <% @items.each do |item| %>
+                        <tr id="row-item-<%= item.id %>" class="transition-all hover:bg-gray-100 hover:shadow-lg">
+                          <td class="px-6 py-4 whitespace-nowrap">
+                            <div class="flex items-center">
+                              <div class="flex-shrink-0 w-10 h-10">
+                                <%# TODO: Here goes item image %>
+
+                                <% if item.image.attached? %>
+                                  <%= cl_image_tag item.image.key, class: "w-10 h-10 rounded-lg" %>
+                                <% else %>
+                                  <img
+                                  class="w-10 h-10 rounded-full"
+                                  src="https://avatars0.githubusercontent.com/u/57622665?s=460&u=8f581f4c4acd4c18c33a87b3e6476112325e8b38&v=4"
+                                  alt=""
+                                />
+                                <% end %>
+
+                              </div>
+                              <div class="ml-4">
+                                <%= tag.p item.title, class: "text-sm font-medium text-gray-900" %>
+                                <%= tag.p item.item_type, class: "text-sm font-medium text-gray-600" %>
+                              </div>
+                            </div>
+                          </td>
+                          <td class="px-6 py-4 whitespace-nowrap">
+                            <%= tag.p item.description, class: "text-sm text-gray-900" %>
+                          </td>
+                          <td class="px-6 py-4 whitespace-nowrap">
+
+
+                            <span
+                              class="inline-flex px-2 text-xs font-semibold leading-5 text-green-800 bg-green-100 rounded-full"
+                            >
+                              Active
+                            </span>
+                          </td>
+                          <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">$ <%= item.price %></td>
+                          <td class="px-6 py-4 text-sm font-medium text-right whitespace-nowrap flex justify-end mt-2 ml-2 h-full gap-1">
+                            <%= link_to "Edit", edit_item_path(item), class: "bg-emerald-300 p-1 rounded-md", data: { item_id: item.id } %>
+                            <%= button_to "Remove", archive_item_path(item), method: :post, class: "bg-red-300 text-black p-1 rounded-md remove-button", data: { confirm: "Are you sure you want to remove this item?" } %>
+                          </td>
+                        </tr>
+                      <% end %>
+
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
           </div>
         </div>
+
 
       </main>
       <!-- Main footer -->
@@ -775,6 +778,7 @@
 
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.min.js" defer></script>
 <script>
+  // Setup of the page
   const setup = () => {
     return {
       loading: true,
@@ -787,7 +791,8 @@
     }
   }
 
-  $("form button").click(function (e) {
+  // Item remove button function
+  $("form .remove-button").click(function (e) {
     e.preventDefault();
     const itemDiv = $(this).parent().parent().parent()
     const url = $(this).parent().attr("action")
@@ -805,9 +810,9 @@
         console.error("Error:", error);
       }
     });
-
   });
 
+  // Add item button/form
   const closeForm = () => {
     $("#add-item-form").hide()
   }
@@ -815,6 +820,8 @@
   const openForm = () => {
     $("#add-item-form").show()
   }
+
+  // Update file button in the form
   function updateFileLabel(input) {
     const fileLabel = document.getElementById('file_label');
     if (input.files.length > 0) {
@@ -824,4 +831,38 @@
     }
   }
 
+  // Item edit button function
+
+  $("td a").click(function (e) {
+    e.preventDefault();
+    const url = $(this).attr("href")
+    console.log(url);
+
+    $.ajax({
+      type: "GET",
+      url: url,
+      headers: {
+          "X-CSRF-Token": $('meta[name="csrf-token"]').attr("content"),
+        },
+      success: function (response) {
+        console.log("success");
+        const responseHTML = $(response);
+        const form = responseHTML.filter("form");
+        $("body").append(form).show();
+      },
+      error: function(error) {
+        console.log("Error:", error);
+      }
+    });
+  });
+
+
+  const closeEditForm = () => {
+    $("#edit-item-form").remove();
+  }
+
+  $("#edit-submit-button").click(function(e) {
+    e.preventDefault();
+    console.log("submitted");
+  })
 </script>

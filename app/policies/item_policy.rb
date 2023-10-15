@@ -17,4 +17,12 @@ class ItemPolicy < ApplicationPolicy
   def create?
     user.admin?
   end
+
+  def edit_partial?
+    user.admin?
+  end
+
+  def update?
+    user.admin?
+  end
 end
