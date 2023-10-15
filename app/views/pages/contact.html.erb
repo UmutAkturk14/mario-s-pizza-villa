@@ -1,6 +1,6 @@
 <% content_for :title, "Contact" %>
 
-<main class="flex-grow page-content">
+<main class="hidden flex-grow page-content">
   <!-- Contact Form Section -->
   <section class="container mx-auto grid lg:grid-cols-2">
     <div class="flex flex-col text-center lg:text-start m-auto p-6 mb-20 w-full h-full">
@@ -47,3 +47,6 @@
     </div>
   </section>
 </main>
+<script>
+  $("main").fadeIn(500)
+</script>

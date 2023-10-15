@@ -4,4 +4,6 @@ class Item < ApplicationRecord
   def archive
     update(archived: true)
   end
+
+  validates :title, :item_type, :description, :price, presence: true
 end
