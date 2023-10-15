@@ -18,6 +18,6 @@ Rails.application.routes.draw do
 
   # Order page
   resources :order_items, only: [:destroy]
-  resources :items, only: [:create]
+  resources :items, only: [:create, :edit, :update]
 
 end

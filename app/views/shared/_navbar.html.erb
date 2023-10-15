@@ -123,12 +123,49 @@ $(document).ready(function() {
 
 
   $("nav ul a").click(function (e) {
+    // Prevent the default link behavior (page navigation)
     e.preventDefault();
+
+    // Get the URL from the clicked link's href attribute
     const url = $(this).attr("href");
-    $(".page-content").fadeOut(500, function() {
-      window.location.href = url;
+    if (url === window.location.pathname) {
+      return
+    }
+
+    // Perform an AJAX GET request to the specified URL
+    $.ajax({
+      type: "get",
+      url: url,
+      headers: {
+        "X-CSRF-Token": $('meta[name="csrf-token"]').attr("content"),
+      },
+      success: function (response) {
+        // Parse the response into a jQuery object
+        let responseHTML = $(response);
+        let main = responseHTML.filter("main")
+        let title = responseHTML.filter("title");
+        let newTitle = title[0].text;
+        $("main").replaceWith(main);
+        $("main").fadeIn(500);
+        let previousURL = window.location.pathname
+        history.pushState(null, null, url);
+        // Determine the corresponding link ID based on the current URL
+        const linkId = urlToLinkId[url];
+        const previousLinkId = urlToLinkId[previousURL];
+        $("title").text(newTitle);
+
+        if (linkId) {
+            // Remove the "text-amber-600 font-bold" class from all links
+            const parents = $(linkId).parents()
+            let links = $(parents).find("a")
+            // Add the new class to the link with the specified ID
+            $(linkId).toggleClass("text-white text-amber-600 font-bold");
+            $(previousLinkId).toggleClass("text-white text-amber-600 font-bold");
+        }
+      }
     });
   });
+
 
 });
 </script>
