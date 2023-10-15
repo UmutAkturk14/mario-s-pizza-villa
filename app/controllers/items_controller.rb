@@ -48,7 +48,6 @@ class ItemsController < ApplicationController
   def update
     @item = Item.find(params[:id])
     authorize @item
-
     if @item.update(item_params)
       # Successful update, redirect to the show page or another appropriate location
       redirect_to dashboard_path, notice: 'Item updated successfully.'

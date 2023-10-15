@@ -15,10 +15,10 @@
       <div class="mb-5 mt-2">
         <label class="text-black font-normal">Upload Image</label>
         <div class="flex items-center mt-1">
-          <label for="file_input" class="w-24 h-10 flex items-center justify-center text-white bg-indigo-600 hover:bg-indigo-700 rounded cursor-pointer">
-            <span id="file_label">Browse</span>
+          <label for="file_input_edit" class="w-24 h-10 flex items-center justify-center text-white bg-indigo-600 hover:bg-indigo-700 rounded cursor-pointer">
+            <span id="file_edit_label">Browse</span>
           </label>
-          <%= f.file_field :image, id: "file_input", class: "hidden", onchange: "updateFileLabel(this);" %>
+          <%= f.file_field :image, id: "file_input_edit", class: "hidden", onchange: "updateEditFileLabel(this);" %>
         </div>
       </div>
 
