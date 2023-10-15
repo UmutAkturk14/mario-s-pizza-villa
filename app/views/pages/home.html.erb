@@ -1,6 +1,6 @@
 <% content_for :title, "Home" %>
 
-<main class="flex-grow page-content">
+<main class="hidden flex-grow page-content">
   <div class="relative m-auto">
     <img src="https://images.unsplash.com/photo-1584859977999-531c305575b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="" class="w-full h-[75vh] object-cover my-8">
     <div class="text-white absolute p-2 top-0 h-full w-full flex flex-col justify-center">
@@ -75,3 +75,6 @@
 }
 
 </style>
+<script>
+  $("main").fadeIn(500)
+</script>

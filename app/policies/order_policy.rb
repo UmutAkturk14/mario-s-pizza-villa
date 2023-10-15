@@ -1,4 +1,4 @@
-class ItemPolicy < ApplicationPolicy
+class OrderPolicy < ApplicationPolicy
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
     # def resolve
@@ -6,15 +6,7 @@ class ItemPolicy < ApplicationPolicy
     # end
   end
 
-  def add_to_cart?
-    true
-  end
-
-  def archive_item?
-    user.admin?
-  end
-
-  def create?
+  def dashboard?
     user.admin?
   end
 end

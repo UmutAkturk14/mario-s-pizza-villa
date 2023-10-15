@@ -1,6 +1,6 @@
 <% content_for :title, "About Us" %>
 
-<main class="page-content grid lg:grid-cols-2 gap-6 mt-2 lg:mx-20">
+<main class="hidden page-content grid lg:grid-cols-2 gap-6 mt-2 lg:mx-20">
   <section class="flex-grow gap-4 w-full text-justify col-span-1 p-4 justify-center">
     <% about_sections = [
       {
@@ -49,3 +49,7 @@
     <% end %>
   </aside>
 </main>
+
+<script>
+  $("main").fadeIn(500)
+</script>
