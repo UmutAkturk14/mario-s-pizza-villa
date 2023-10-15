@@ -10,6 +10,7 @@
 # Admin
 p "Creating admin..."
 User.create!(first_name: "John", last_name: "Doe", password: "123456", address: "20 Av de Bardanac", email: "johndoe@email.com", phone_number: "0766163791", admin: true)
+User.create!(first_name: "Jane", last_name: "Doe", password: "123456", address: "20 Av de Bardanac", email: "janedoe@email.com", phone_number: "0766163791", admin: false)
 
 # Items
 p "Creating menu..."

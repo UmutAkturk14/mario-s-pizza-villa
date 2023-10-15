@@ -1,7 +1,7 @@
 <div class="relative inline-block">
   <!-- Dropdown toggle button -->
   <button id="profile-button" class="relative z-10 flex items-center p-2 text-sm text-gray-600 bg-white border border-transparent rounded-md dark:focus:ring-0  dark:text-white dark:bg-gray-800 focus:outline-none">
-    <% full_name = "#{current_user.first_name} #{current_user.last_name}" %>
+    <% full_name = current_user.admin? ? "Admin" : "#{current_user.first_name} #{current_user.last_name}" %>
     <span class="mx-1"><%= full_name %></span>
     <svg class="w-5 h-5 mx-1" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M12 15.713L18.01 9.70299L16.597 8.28799L12 12.888L7.40399 8.28799L5.98999 9.70199L12 15.713Z" fill="currentColor"></path>
@@ -14,16 +14,28 @@
 
         <svg xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0 object-cover mx-1 rounded-full w-9 h-9 fill-white" viewBox="0 0 20 20"><path d="M10 20a10 10 0 1 1 0-20 10 10 0 0 1 0 20zM7 6v2a3 3 0 1 0 6 0V6a3 3 0 1 0-6 0zm-3.65 8.44a8 8 0 0 0 13.3 0 15.94 15.94 0 0 0-13.3 0z"/></svg>
         <div class="mx-1">
-            <h1 class="text-sm font-semibold text-gray-700 dark:text-gray-200"><%= full_name %></h1>
+          <h1 class="text-sm font-semibold text-gray-700 dark:text-gray-200"><%= full_name %></h1>
+          <% unless current_user.admin? %>
             <p class="text-sm text-gray-500 dark:text-gray-400"><%= current_user.email %></p>
+          <% end %>
+
         </div>
     </a>
 
     <hr class="border-gray-200 dark:border-gray-700 ">
 
-    <a href="#" class="block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
-        view profile
-    </a>
+
+    <% if current_user.admin? %>
+      <%= link_to dashboard_path, class: "block px-4 py-3 text-sm text-gray-600 transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white" do  %>
+        <span>View dashboard</span>
+      <% end %>
+    <% else %>
+      <%# TODO: Turn this into an lt %>
+      <a href="#" class="block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
+          view profile
+      </a>
+    <% end %>
+
 
     <a href="#" class="block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
         Settings

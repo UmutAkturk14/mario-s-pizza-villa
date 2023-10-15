@@ -1,30 +1,39 @@
 
 <% content_for :title, "Menu" %>
-<main class="grid mx-2 lg:mx-6 xl:mx-40 m-auto grid-cols-1 lg:grid-cols-2  gap-4 w-full xl:w-4/5" style="margin: auto;">
+<main class="hidden">
+  <div class="grid mx-2 lg:mx-6 xl:mx-40 m-auto grid-cols-1 lg:grid-cols-2  gap-4 w-full xl:w-4/5" style="margin: auto;">
 
-  <% @menu.each do |item| %>
-    <div class="flex rounded-3xl p-2 border-4 hover:bg-rose-50 text-white hover:text-black duration-500 xl:h-52 gap-1 cursor-default">
-      <%# Title - Description - Price %>
-      <div class="flex flex-col justify-between w-3/4">
-        <div class="">
-          <%= tag.p item.title, class: "font-heading text-xl xl:text-4xl " %>
-          <%= tag.p item.description, class: "mt-2 xl:text-xl " %>
+
+    <% @menu.each do |item| %>
+      <div class="flex rounded-3xl p-2 border-4 hover:bg-rose-50 text-white hover:text-black duration-500 xl:h-52 gap-1 cursor-default">
+        <%# Title - Description - Price %>
+        <div class="flex flex-col justify-between w-3/4">
+          <div class="">
+            <%= tag.p item.title, class: "font-heading text-xl xl:text-4xl " %>
+            <%= tag.p item.description, class: "mt-2 xl:text-xl " %>
+          </div>
+          <%= tag.p "$ #{item.price}", class: "xl:text-xl font-bold " %>
         </div>
-        <%= tag.p "$ #{item.price}", class: "xl:text-xl font-bold " %>
+        <%# Image - Add to cart button %>
+        <div class="relative w-1/4">
+
+          <% if item.image.attached? %>
+            <%= cl_image_tag item.image.key, class: "h-full w-full rounded-xl" %>
+          <% else %>
+            <img src="https://plus.unsplash.com/premium_photo-1661517302764-a5fa40c34bf0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="" class="h-full w-full rounded-xl">
+          <% end %>
+
+          <%= form_tag(add_to_cart_path(item), method: :post) do %>
+            <button id="button-<%= item.id %>" path="<%= add_to_cart_path(item) %>" itemID="<%= item.id %>" type="submit" class="w-8 h-8 absolute bottom-1 right-1 add-button">
+              <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-plus-circle fill-red-500 rounded-full hover:bg-rose-200 duration-500 bg-white" viewBox="0 0 16 16">
+                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+              </svg>
+            </button>
+          <% end %>
+        </div>
       </div>
-      <%# Image - Add to cart button %>
-      <div class="relative w-1/4">
-        <img src="https://plus.unsplash.com/premium_photo-1661517302764-a5fa40c34bf0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="" class="h-full w-full rounded-xl">
-        <%= form_tag(add_to_cart_path(item), method: :post) do %>
-          <button id="button-<%= item.id %>" path="<%= add_to_cart_path(item) %>" itemID="<%= item.id %>" type="submit" class="w-8 h-8 absolute bottom-1 right-1 add-button">
-            <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-plus-circle fill-red-500 rounded-full hover:bg-rose-200 duration-500 bg-white" viewBox="0 0 16 16">
-              <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-            </svg>
-          </button>
-        <% end %>
-      </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </main>
 
 <!--
@@ -48,3 +57,6 @@
 <% end %>
 
 -->
+<script>
+  $("main").hide().fadeIn(500)
+</script>

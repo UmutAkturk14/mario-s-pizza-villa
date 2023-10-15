@@ -18,4 +18,30 @@ class ItemsController < ApplicationController
 
     redirect_to menu_path
   end
+
+  def create
+    item = Item.new(item_params)
+    authorize item
+    respond_to do |format|
+      if item.save
+        format.html { redirect_to dashboard_path }
+        format.json { render json: { item: item }, status: :created }
+      else
+        format.html { render :new }
+        format.json { render json: { errors: item.errors.full_messages }, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def archive_item
+    item = Item.find(params[:id])
+    authorize item
+    item.archive
+  end
+
+  private
+
+  def item_params
+    params.require(:item).permit(:title, :price, :description, :item_type, :image)
+  end
 end

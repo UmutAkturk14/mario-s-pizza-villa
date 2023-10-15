@@ -104,7 +104,7 @@ gem "simple_form", github: "heartcombo/simple_form"
 # gem 'faker'
 
 # Cloudinary
-# gem "cloudinary"
+gem "cloudinary"
 
 # Unsplash for seeding photos
 # gem 'unsplash'
