@@ -48,11 +48,13 @@
       <p class="text-white ml-2">Total price :</p>
       <p id="total-price" class="text-white mr-2 font-bold">$ <%= order.total_price.to_f %></p>
     </section>
-
+    <% order = Order.find_by(user: current_user, status: :pending) %>
     <%# TODO: Add link to checkout page %>
-    <section class="bg-gradient-to-br from-orange-500 to-orange-800  text-white hover:bg-gradient-to-br hover:from-orange-400 hover:to-orange-600 flex justify-center font-lg font-heading p-2 rounded-lg">
-      <p>Checkout</p>
-    </section>
+    <%= button_to finish_purchase_path(order), method: :post, class: "w-full" do  %>
+      <section class="bg-gradient-to-br from-orange-500 to-orange-800  text-white hover:bg-gradient-to-br hover:from-orange-400 hover:to-orange-600 flex justify-center font-lg font-heading p-2 rounded-lg">
+        <p>Checkout</p>
+      </section>
+    <% end %>
 
   </div>
 </div>

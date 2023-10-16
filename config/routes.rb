@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'orders/finish_purchase'
   get 'order_items/delete'
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -15,6 +16,7 @@ Rails.application.routes.draw do
   # Add item to cart
   post "items/:id/add_to_cart", to: "items#add_to_cart", as: "add_to_cart"
   post "items/:id/archive_item", to: "items#archive_item", as: "archive_item"
+  post "orders/:id/finish_purchase", to: "orders#finish_purchase", as: "finish_purchase"
 
   # Order page
   resources :order_items, only: [:destroy]
