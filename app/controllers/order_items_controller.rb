@@ -7,7 +7,7 @@ class OrderItemsController < ApplicationController
       order_item.quantity -= 1
       order.total_price -= order_item.item.price.to_d
       order.save!
-      order_item.destroy
+      order_item.save!
     else
       order.total_price -= order_item.item.price.to_d
       order.save!
