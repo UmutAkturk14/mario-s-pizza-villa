@@ -39,6 +39,24 @@ class ItemsController < ApplicationController
     item.archive
   end
 
+  def edit_partial
+    @item = Item.find(params[:id])
+    authorize @item
+    render partial: 'shared/edit_item', locals: { item: @item }
+  end
+
+  def update
+    @item = Item.find(params[:id])
+    authorize @item
+    if @item.update(item_params)
+      # Successful update, redirect to the show page or another appropriate location
+      redirect_to dashboard_path, notice: 'Item updated successfully.'
+    else
+      # Update failed, render the edit form again with error messages
+      render :edit
+    end
+  end
+
   private
 
   def item_params
