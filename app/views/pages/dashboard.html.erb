@@ -865,4 +865,14 @@
     e.preventDefault();
     console.log("submitted");
   })
+
+  // Update file button in the form
+  function updateEditFileLabel(input) {
+    const fileLabel = document.getElementById('file_label');
+    if (input.files.length > 0) {
+      fileLabel.textContent = 'File Selected';
+    } else {
+      fileLabel.textContent = 'Browse';
+    }
+  }
 </script>
