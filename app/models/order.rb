@@ -13,7 +13,7 @@ class Order < ApplicationRecord
     puts "Order Date: #{order_date.nil?}"
     puts "Turns: #{status == 'processed' && order_date.nil?}"
     if status == 'processed' && order_date.nil?
-      self.order_date = created_at.to_date
+      self.order_date = Time.now
       save
     end
   end

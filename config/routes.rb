@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   post "items/:id/add_to_cart", to: "items#add_to_cart", as: "add_to_cart"
   post "items/:id/archive_item", to: "items#archive_item", as: "archive_item"
   post "orders/:id/finish_purchase", to: "orders#finish_purchase", as: "finish_purchase"
+  post "orders/:id/update_order_status", to: "orders#update_order_status", as: "update_order_status"
 
   # Order page
   resources :order_items, only: [:destroy]

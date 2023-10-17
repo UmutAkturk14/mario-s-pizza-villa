@@ -19,7 +19,7 @@ class PagesController < ApplicationController
     @item = Item.new
     # Define date ranges for daily, weekly, monthly, and quarterly orders
     today = Date.today
-    @orders = Order.where(created_at: today.beginning_of_day..today.end_of_day, status: [:processed, :en_route, :delievered])
+    @orders = Order.where(order_date: today.beginning_of_day..today.end_of_day, status: [:processed, :en_route, :delievered])
     yesterday = Date.yesterday
     this_week = today.at_beginning_of_week..today.at_end_of_week
     last_week = (today - 1.week).at_beginning_of_week..(today - 1.week).at_end_of_week
