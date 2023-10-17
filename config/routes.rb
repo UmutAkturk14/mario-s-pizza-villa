@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   # Order page
   resources :order_items, only: [:destroy]
   resources :items, only: [:create, :update]
+  resources :users, only: [:edit, :update]
   get 'items/:id/edit_partial', to: 'items#edit_partial', as: 'edit_item'
 
 end
