@@ -507,25 +507,16 @@
                       </th>
                       <th
                         scope="col"
-                        class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
+                        class="px-6 py-3 flex justify-end mr-24 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
                       >
                         Status
-                      </th>
-                      <th
-                        scope="col"
-                        class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
-                      >
-                        Role
-                      </th>
-                      <th scope="col" class="relative px-6 py-3">
-                        <span class="sr-only">Edit</span>
                       </th>
                     </tr>
                   </thead>
                   <tbody class="bg-white divide-y divide-gray-200">
-
-                    <% @orders.each do |order| %>
+                    <% @orders.reverse.each do |order| %>
                       <tr class="transition-all hover:bg-gray-100 hover:shadow-lg">
+                        <%# Recipient %>
                         <td class="px-6 py-4 whitespace-nowrap border-r border-opacity-10">
                           <div class="flex flex-col flex-grow">
                             <div class="text-sm font-medium text-gray-900"><%= "#{order.user.first_name} #{order.user.last_name}" %></div>
@@ -547,20 +538,30 @@
                               </div>
                           </div>
                         </td>
+                        <%# Order %>
                         <td class="px-6 py-4 whitespace-nowrap">
-                          <div class="text-sm text-gray-900">Regional Paradigm Technician</div>
-                          <div class="text-sm text-gray-500">Optimization</div>
+                          <% order.order_items.each do |item| %>
+                            <p class="text-sm text-gray-900"><%= item.item.title %> (<%= item.quantity %>)</p>
+                          <% end %>
                         </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                          <span
-                            class="inline-flex px-2 text-xs font-semibold leading-5 text-green-800 bg-green-100 rounded-full"
-                          >
-                            Active
-                          </span>
-                        </td>
-                        <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">Admin</td>
-                        <td class="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
-                          <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                        <%# Status %>
+                        <td class="px-6 py-4 whitespace-nowrap flex justify-end mt-6">
+                          <%= simple_form_for order, url: update_order_status_path(order), method: :post do |f| %>
+                            <%= f.collection_select :status, Order.statuses.keys, :to_s, :humanize, { }, { class: "border-0 ring-0 focus:ring-0 rounded-full bg-emerald-50 text-sm order-status" } %>
+
+                            <%= button_tag type: 'submit', class: "hidden" do %>
+                              <svg class="hover:fill-emerald-600 w-6 h-6" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" zoomAndPan="magnify" viewBox="0 0 30 30.000001" height="40" preserveAspectRatio="xMidYMid meet" version="1.0">
+                                <defs>
+                                  <clipPath id="id1">
+                                    <path d="M 2.847656 4.792969 L 26.796875 4.792969 L 26.796875 24.390625 L 2.847656 24.390625 Z M 2.847656 4.792969 " clip-rule="nonzero"/>
+                                  </clipPath>
+                                </defs>
+                                <g clip-path="url(#id1)">
+                                  <path  d="M 11.078125 24.3125 L 2.847656 15.890625 L 6.128906 12.53125 L 11.078125 17.597656 L 23.519531 4.875 L 26.796875 8.230469 Z M 11.078125 24.3125 " />
+                                </g>
+                              </svg>
+                            <% end %>
+                          <% end %>
                         </td>
                       </tr>
                     <% end %>
@@ -768,6 +769,8 @@
             <span id="file_label">Browse</span>
           </label>
           <%= f.file_field :image, id: "file_input", class: "hidden", onchange: "updateFileLabel(this);" %>
+
+
         </div>
       </div>
 
@@ -776,7 +779,7 @@
 
 
       <!-- Your buttons and close button here -->
-
+      <%= hidden_field_tag "authenticity_token", form_authenticity_token %>
       <%= f.submit 'Submit', class: 'focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 transition duration-150 ease-in-out hover:bg-indigo-700 bg-indigo-600 rounded text-white px-8 py-2 text-sm', id: "submit-form" %>
       <button type="button" class="focus:outline-none focus:ring-2 focus:ring-offset-2  focus:ring-gray-400 ml-3 bg-gray-100 transition duration-150 text-gray-600 ease-in-out hover:border-gray-400 hover:bg-gray-300 border rounded px-8 py-2 text-sm" onclick="closeForm()">Close</button>
     </div>
@@ -882,4 +885,50 @@
       fileLabel.textContent = 'Browse';
     }
   }
+
+  $(".edit_order").addClass("w-1/3 flex justify-between");
+  $(".order-status").change(function (e) {
+    // Order
+    const order = $(this).closest("tr");
+    // URL for AJAX
+    const url = $(this).parent().attr("action");
+    console.log($(this).val());
+
+    // Show specific confirm button
+    const button = $(this).siblings()
+    $(button).click(function (e) {
+      e.preventDefault();
+
+      const status = $(this).siblings(".order-status").val(); // Récupérer la valeur de status depuis le select
+
+      $.ajax({
+        type: "post",
+        url: url,
+        data: { order: { status: status } }, // Envoyer le paramètre correctement
+        headers: {
+          "X-CSRF-Token": $('meta[name="csrf-token"]').attr("content"),
+        },
+        success: function (response) {
+          if (status === "delivered") {
+            order.remove();
+          }
+          console.log("success");
+          button.fadeOut(300);
+        },
+        error: function (err) {
+
+        },
+      });
+    });
+    $(this).siblings().fadeIn(300);
+  });
+
+  $(".order-status").each(function (index, element) {
+    // Get button - Get selection - Get selected value
+    const button = this
+    const selection = $(button).find('option[selected="selected"]')[0]
+    const selectionValue = $(selection).val()
+    $(button).val(selectionValue)
+  });
+
 </script>

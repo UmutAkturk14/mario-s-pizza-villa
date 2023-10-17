@@ -13,4 +13,8 @@ class OrderPolicy < ApplicationPolicy
   def finish_purchase?
     record.user == user
   end
+
+  def update_order_status?
+    user.admin?
+  end
 end
