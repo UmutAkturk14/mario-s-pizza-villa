@@ -31,9 +31,7 @@
       <% end %>
     <% else %>
       <%# TODO: Turn this into an lt %>
-      <a href="#" class="block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
-          view profile
-      </a>
+      <%= link_to "View profile", edit_user_path(current_user), class: "block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white", id: "edit-profile-button"  %>
     <% end %>
 
 
@@ -65,7 +63,7 @@
         Help
     </a>
 
-    <%= link_to "Sign out", destroy_user_session_path, class: "block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white", data: {turbo_method: :delete} %>
+    <%= button_to "Sign out", destroy_user_session_path, class: "block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white w-full flex justify-start", method: :delete %>
   </div>
   </div>
 
