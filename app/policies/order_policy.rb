@@ -9,4 +9,12 @@ class OrderPolicy < ApplicationPolicy
   def dashboard?
     user.admin?
   end
+
+  def finish_purchase?
+    record.user == user
+  end
+
+  def update_order_status?
+    user.admin?
+  end
 end

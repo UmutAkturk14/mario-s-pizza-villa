@@ -53,7 +53,7 @@ class ItemsController < ApplicationController
       redirect_to dashboard_path, notice: 'Item updated successfully.'
     else
       # Update failed, render the edit form again with error messages
-      render :edit
+      render "shared/edit_item", locals: { item: @item }
     end
   end
 

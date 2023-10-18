@@ -1,4 +1,4 @@
-class OrderItemPolicy < ApplicationPolicy
+class UserPolicy < ApplicationPolicy
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
     # def resolve
@@ -6,7 +6,11 @@ class OrderItemPolicy < ApplicationPolicy
     # end
   end
 
-  def destroy?
-    record.order.user == user
+  def edit?
+    record == user
+  end
+
+  def update?
+    record == user
   end
 end

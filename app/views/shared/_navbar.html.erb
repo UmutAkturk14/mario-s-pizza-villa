@@ -105,6 +105,7 @@ $(document).ready(function() {
       "<%= about_path %>": "#about-link",
       "<%= services_path %>": "#service-link",
       "<%= menu_path %>": "#menu-link",
+      "<%= edit_user_path(current_user) %>": "#edit-profile-button"
   };
 
   // Get the current page URL
@@ -122,7 +123,7 @@ $(document).ready(function() {
   }
 
 
-  $("nav ul a").click(function (e) {
+  $("nav ul a, #edit-profile-button").click(function (e) {
     // Prevent the default link behavior (page navigation)
     e.preventDefault();
 
@@ -164,6 +165,9 @@ $(document).ready(function() {
         }
       }
     });
+
+    // Toggle profile dropdown
+    $("#profile-dropdown").slideUp(200);
   });
 
 

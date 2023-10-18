@@ -13,8 +13,7 @@
   <div class="absolute right-0 z-20 w-80 pt-2 mt-2 overflow-hidden bg-white rounded-md shadow-xl dark:bg-gray-800 hidden" id="cart-dropdown">
     <article class="flex items-center p-3 -mt-2 text-sm text-gray-600 transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
         <div class="mx-1">
-            <h1 class="text-lg font-semibold text-gray-700 dark:text-gray-200">Your cart</h1>
-
+          <h1 class="text-lg font-semibold text-gray-700 dark:text-gray-200">Your cart</h1>
         </div>
     </article>
 
@@ -22,7 +21,12 @@
 
     <% order.order_items.each do |order_item| %>
       <article class="px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white flex order-<%=order_item.id%> <%= order_item.item.title.split.join("-") %> ">
-        <img src="https://images.unsplash.com/photo-1594007654729-407eedc4be65?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1928&q=80" alt="" class="flex-shrink-0 object-cover mx-1 rounded-lg  w-12 h-12 z-50">
+
+        <% if order_item.item.image.attached? %>
+          <%= cl_image_tag order_item.item.image.key, class: "flex-shrink-0 object-cover mx-1 rounded-lg  w-12 h-12 z-50" %>
+        <% else %>
+          <img src="https://images.unsplash.com/photo-1594007654729-407eedc4be65?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1928&q=80" alt="" class="flex-shrink-0 object-cover mx-1 rounded-lg  w-12 h-12 z-50">
+        <% end %>
         <div class="flex flex-col flex-grow ml-2">
           <%= tag.p "#{order_item.item.title} (#{order_item.quantity})", class: "text-white" %>
         </div>
@@ -48,11 +52,13 @@
       <p class="text-white ml-2">Total price :</p>
       <p id="total-price" class="text-white mr-2 font-bold">$ <%= order.total_price.to_f %></p>
     </section>
-
+    <% order = Order.find_by(user: current_user, status: :pending) %>
     <%# TODO: Add link to checkout page %>
-    <section class="bg-gradient-to-br from-orange-500 to-orange-800  text-white hover:bg-gradient-to-br hover:from-orange-400 hover:to-orange-600 flex justify-center font-lg font-heading p-2 rounded-lg">
-      <p>Checkout</p>
-    </section>
+    <%= button_to finish_purchase_path(order), method: :post, class: "w-full" do  %>
+      <section class="bg-gradient-to-br from-orange-500 to-orange-800  text-white hover:bg-gradient-to-br hover:from-orange-400 hover:to-orange-600 flex justify-center font-lg font-heading p-2 rounded-lg">
+        <p>Checkout</p>
+      </section>
+    <% end %>
 
   </div>
 </div>
