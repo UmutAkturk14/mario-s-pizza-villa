@@ -105,7 +105,7 @@ $(document).ready(function() {
       "<%= about_path %>": "#about-link",
       "<%= services_path %>": "#service-link",
       "<%= menu_path %>": "#menu-link",
-      "<%= edit_user_path(current_user) %>": "#edit-profile-button"
+      "<%= edit_user_path(current_user) if user_signed_in? %>": "#edit-profile-button"
   };
 
   // Get the current page URL

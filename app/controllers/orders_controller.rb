@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
     authorize order
     order.status = :processed
     if order.save
-      redirect_to menu_path, notice: "Order was successfully processed"
+      redirect_to menu_path, notice: "Your order has been successfully processed. Our chef's making your order! 🍕🍺"
     end
   end
 
