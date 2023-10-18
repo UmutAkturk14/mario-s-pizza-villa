@@ -8,7 +8,7 @@
       <h1 class="text-gray-800 font-lg font-bold tracking-normal leading-tight mb-4">Edit Item Details</h1>
 
       <%= f.input :title, label: 'Title', input_html: { class: 'mb-5 mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border' } %>
-      <%= f.select :item_type, ['Pizza', 'Drink', 'Snack'], { include_blank: 'Select Item Type' }, { class: 'mb-5 mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border' } %>
+      <%= f.select :item_type, ['Pizza', "Hamburger", 'Drink', 'Snack'], { include_blank: 'Select Item Type' }, { class: 'mb-5 mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border' } %>
 
       <%= f.input :description, label: 'Description', input_html: { class: 'mb-5 mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border h-60' } %>
       <%= f.input :price, label: 'Price', input_html: { class: 'mb-5 mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border' } %>
