@@ -39,7 +39,11 @@
     <% if user_signed_in? %>
 
       <div class="flex justify-center items-center gap-4">
-        <%= render "shared/cart_dropdown" %>
+
+        <% unless current_user.admin? %>
+          <%= render "shared/order_dropdown" %>
+          <%= render "shared/cart_dropdown" %>
+        <% end %>
         <%= render "shared/profile_dropdown" %>
       </div>
     <% else %>
@@ -105,7 +109,7 @@ $(document).ready(function() {
       "<%= about_path %>": "#about-link",
       "<%= services_path %>": "#service-link",
       "<%= menu_path %>": "#menu-link",
-      "<%= edit_user_path(current_user) %>": "#edit-profile-button"
+      "<%= edit_user_path(current_user) if user_signed_in? %>": "#edit-profile-button"
   };
 
   // Get the current page URL

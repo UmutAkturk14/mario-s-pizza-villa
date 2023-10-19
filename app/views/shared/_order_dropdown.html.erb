@@ -1,0 +1,76 @@
+<div class="relative inline-block">
+  <% full_name = "#{current_user.first_name} #{current_user.last_name}" %>
+  <% orders = Order.where(user: current_user, status: [:processed, :en_route]) %>
+  <!-- Dropdown toggle button -->
+  <div class="relative text-gray-600 bg-white border border-transparent rounded-md   dark:focus:ring-0  dark:text-white dark:bg-gray-800 focus:outline-none flex justify-center p-2 " id="order-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-clock w-5 h-5 fill-gray-300" viewBox="0 0 16 16"> <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/> <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/> </svg>
+    <%# TODO: If there's items in the cart %>
+    <% cart = current_user.orders.find_by(status: :pending) %>
+    <button id="notification-bubble-order" class="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full hidden"></button>
+  </div>
+
+  <!-- Dropdown menu -->
+  <div class="absolute right-0 z-20 w-80 pt-2 mt-2 overflow-hidden bg-white rounded-md shadow-xl dark:bg-gray-800 hidden" id="order-dropdown">
+    <article class="flex items-center p-3 -mt-2 text-sm text-gray-600 transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
+        <div class="mx-1">
+          <h1 class="text-lg font-semibold text-gray-700 dark:text-gray-200">Your orders</h1>
+        </div>
+    </article>
+
+    <hr class="border-gray-200 dark:border-gray-700">
+
+    <% orders.each do |order| %>
+      <article class="px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white flex order-<%=order.id%> <%= "border-b" unless orders[-1] == order  %> border-gray-700">
+        <div class="flex flex-col flex-grow ml-2">
+          <% order_title = order.order_items.map { |item| item.item.title }.join(", ") %>
+
+          <%= tag.p order.order_date.to_date, class: "text-white text-xs underline underline-offset-2   w-2/5 p-0.5 rounded-lg" %>
+          <%= tag.p order_title, class: "text-white font-bold mt-2" %>
+          <%= tag.p order.status.humanize, class: "text-black text-center mt-2 w-2/5 rounded-lg
+            #{
+              if order.status == "processed"
+                "bg-pink-300"
+              elsif order.status == "en_route"
+                "bg-orange-300"
+              elsif order.status == "delivered"
+                "bg-emerald-300"
+              end
+            }
+          " %>
+        </div>
+        <div class="flex flex-col  justify-end">
+          <%# TODO: Price %>
+          <%= tag.p "#{number_to_currency(order.total_price, precision: 2)}", class: "font-bold text-sm text-white bg-gray-600 p-0.5 px-2 rounded-lg whitespace-nowrap" %>
+        </div>
+
+      </article>
+
+    <% end %>
+
+    <hr class="border-gray-200 dark:border-gray-700 ">
+    <% order = Order.find_by(user: current_user, status: :pending) %>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function () {
+    // Activate notification bubble if there's items in the cart
+    if ($("#order-dropdown").children().length > 3) {
+      $("#notification-bubble-order").fadeIn();
+    }
+    // Click event to toggle the cart dropdown
+    $("#order-icon").click(function () {
+      $("#profile-dropdown").hide();
+      $("#cart-dropdown").hide();
+      $("#order-dropdown").slideToggle(200);
+    });
+
+
+    // Hide the profile dropdown when the mouse leaves
+    $("#profile-dropdown").mouseleave(function () {
+      $("#profile-dropdown").slideUp(200);
+    });
+  });
+
+
+</script>

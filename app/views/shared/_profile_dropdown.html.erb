@@ -34,34 +34,7 @@
       <%= link_to "View profile", edit_user_path(current_user), class: "block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white", id: "edit-profile-button"  %>
     <% end %>
 
-
-    <a href="#" class="block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
-        Settings
-    </a>
-
-    <a href="#" class="block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
-        Keyboard shortcuts
-    </a>
-
     <hr class="border-gray-200 dark:border-gray-700 ">
-
-    <a href="#" class="block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
-        Company profile
-    </a>
-
-    <a href="#" class="block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
-        Team
-    </a>
-
-    <a href="#" class="block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
-        Invite colleagues
-    </a>
-
-    <hr class="border-gray-200 dark:border-gray-700 ">
-
-    <a href="#" class="block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
-        Help
-    </a>
 
     <%= button_to "Sign out", destroy_user_session_path, class: "block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white w-full flex justify-start", method: :delete %>
   </div>
@@ -71,6 +44,7 @@
   $(document).ready(function () {
     $("#profile-button").click(function () {
       $("#cart-dropdown").hide();
+      $("#order-dropdown").hide();
       $("#profile-dropdown").slideToggle(200);
     });
   });

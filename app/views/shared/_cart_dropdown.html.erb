@@ -72,6 +72,7 @@
     // Click event to toggle the cart dropdown
     $("#cart-icon").click(function () {
       $("#profile-dropdown").hide();
+      $("#order-dropdown").hide();
       $("#cart-dropdown").slideToggle(200);
     });
 
@@ -105,18 +106,19 @@
           success: function(data) {
             // Handle a successful removal, e.g., remove the element from the DOM.
             if (valueInsideParentheses === 1) {
-              $(`.order-${orderItemId}`).remove();
+              $(`.order-${orderItemId}`).fadeOut(function() {
+                $(this).remove();
+                if ($("#cart-dropdown").children().length === 5) {
+                  $("#notification-bubble").fadeOut();
+                  $("#cart-dropdown").slideToggle(200);
+                }
+              });
+
             } else {
               let newValue = valueInsideParentheses - 1;
               let newText = text.replace(/\(\d+\)/, `(${newValue})`);
               orderItem.text(newText);
               orderPrice.text(`$ ${(orderItemPriceTotal - orderItemUnitPrice).toFixed(2)}`);
-            }
-
-            // Check if the cart dropdown has 5 children
-            if ($("#cart-dropdown").children().length === 5) {
-              $("#notification-bubble").fadeOut();
-              $("#cart-dropdown").slideToggle(200);
             }
 
             let newValue = (cartPriceValue - orderItemUnitPrice).toFixed(2);
@@ -177,7 +179,8 @@
             $(`.${titleForArticle} p:last`).text(`$ ${newPrice.toFixed(2)}`);
           } else {
             // Append the new item to the cart dropdown
-            $("#cart-dropdown hr:last").prev().before(newItem);
+            $("#cart-dropdown hr:last").prev().before(newItem.hide().fadeIn());
+
             $("#notification-bubble").fadeIn();
           }
 
