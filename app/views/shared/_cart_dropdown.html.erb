@@ -179,7 +179,7 @@
             $(`.${titleForArticle} p:last`).text(`$ ${newPrice.toFixed(2)}`);
           } else {
             // Append the new item to the cart dropdown
-            $("#cart-dropdown hr:last").prev().before(newItem.hide().fadeIn());
+            $("#cart-dropdown hr:last").before(newItem.hide().fadeIn());
 
             $("#notification-bubble").fadeIn();
           }
