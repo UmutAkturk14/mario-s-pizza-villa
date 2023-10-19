@@ -39,7 +39,11 @@
     <% if user_signed_in? %>
 
       <div class="flex justify-center items-center gap-4">
-        <%= render "shared/cart_dropdown" %>
+
+        <% unless current_user.admin? %>
+          <%= render "shared/order_dropdown" %>
+          <%= render "shared/cart_dropdown" %>
+        <% end %>
         <%= render "shared/profile_dropdown" %>
       </div>
     <% else %>
