@@ -30,8 +30,11 @@
         <span>View dashboard</span>
       <% end %>
     <% else %>
-      <%# TODO: Turn this into an lt %>
       <%= link_to "View profile", edit_user_path(current_user), class: "block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white", id: "edit-profile-button"  %>
+
+      <%# TODO: Previous orders %>
+
+      <%= link_to "View previous orders", "here goes the page URL", class: "block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white", id: "previous-orders-button"  %>
     <% end %>
 
     <hr class="border-gray-200 dark:border-gray-700 ">
