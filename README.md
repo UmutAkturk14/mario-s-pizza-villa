@@ -1,49 +1,62 @@
-# Rails Boilerplate for Online Apps
+# Mario's Pizza Villa
 
-This Rails boilerplate provides a solid foundation for building online applications with essential features such as user authentication, authorization, and a clean front-end design using Tailwind CSS.
+Welcome to Mario's Pizza Villa - your favorite online pizzeria!
+
+## Overview
+
+Mario's Pizza Villa is a Ruby on Rails web application that serves as the online presence for our fictional pizzeria, "Mario's Pizza Villa." This platform allows users to explore our menu, place orders, and conveniently track the status of their orders. Additionally, it offers an admin dashboard with analytics and menu management capabilities.
+
+## Stack
+
+- Ruby on Rails
+- Tailwind CSS
+- JavaScript
+- jQuery
+- PostgreSQL
 
 ## Features
 
-- **User Authentication**: Devise is integrated to handle user registration, sign-in, sign-out, and password reset functionalities.
+### User-Facing Features
 
-- **Authorization**: Pundit is implemented for managing user permissions and access control.
+1. **User Authentication**: Secure user authentication is implemented using the Devise gem. Users can sign up, log in, and manage their profiles.
 
-- **Front-end Styling**: Tailwind CSS is set up as the default styling framework to create modern and responsive user interfaces.
+2. **Authorization**: Authorization for user actions is managed using the Pundit gem to ensure that only authorized users can access certain features.
 
-- **jQuery**: jQuery is included to simplify front-end interactions and enhance user experience.
+3. **Static Web Pages**: The application includes static web pages that provide information about Mario's Pizza Villa, creating an immersive online experience.
 
-- **Database**: PostgreSQL is used as the default database, but you can easily switch to another database of your choice.
+4. **Menu Page**: Users can explore our menu and place orders. The app includes a checkout feature for a seamless ordering process.
 
-- **Rails 7**: This boilerplate is built on Rails 7, harnessing the latest features and improvements.
+5. **Order Tracking**: Users can track the status of their orders, from "processed" to "en route" and "delivered."
 
-- **Ready to go Set up**: With simple, minimalistic sign-in / sign-up pages and a navbar with some generic buttons and a working dropdown, you don't need to lose time creating a working place on the front-end side. You can start working as soon as you clone this repo and worry about the front-end design later.
+### Admin Dashboard
+
+1. **Analytics**: Admins have access to daily, weekly, monthly, and quarterly analytics, including the number of orders and the total amount sold. This provides valuable insights into the business.
+
+2. **Order Management**: Admins can efficiently manage new orders and update their statuses, ensuring a smooth order fulfillment process.
+
+3. **Menu Management**: Admins can easily add or remove menu items, which are seamlessly integrated into the menu page for regular users.
 
 ## Getting Started
 
-Follow these steps to get started with this boilerplate:
+Follow these steps to get a local development environment up and running:
 
-1. Clone the repository to your local machine:
-```bash
-gh repo clone UmutAkturk14/rails-template-pundit-tailwind project-name
-cd project-name
-```
-2. Install the required gems: 
-```bash
-bundle install
-```
-3. Run database migrations:
-```bash
-rails db:migrate
-```
-4. Start the server:
-```bash
-dev
-```
-5. Access the application in your web browser at http://localhost:3000.
+1. Clone this repository.
+2. Install the necessary dependencies using `bundle install`.
+3. Set up the PostgreSQL database and run migrations with `rails db:setup`.
+4. Start the Rails server: `rails server`.
 
-## Usage
-- Customize the application by adding your own controllers, models, and views.
+## Contributing
 
-- Update the policies to define and enforce authorization rules as needed for your application.
+We welcome contributions to enhance Mario's Pizza Villa. Feel free to submit issues, create pull requests, and improve the project. For major changes, please open an issue to discuss the proposed changes.
 
-- Extend the application's functionality according to your project requirements.
+## License
+
+
+
+## Contact
+
+If you have any questions or need further assistance, please contact our development team at [your-email@example.com].
+
+Thank you for choosing Mario's Pizza Villa!
+
+Happy coding and pizza-making!
